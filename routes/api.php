@@ -5,7 +5,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TestimonialController;
 use App\Http\Controllers\Api\ContactInfoController;
-use App\Http\Controllers\Api\GalleryImageController;
+use App\Http\Controllers\Api\BeforeAfterImageController;
+use App\Http\Controllers\Api\PortfolioImageController;
+use App\Http\Controllers\Api\FAQController;
 use App\Http\Controllers\Auth\AdminAuthController;
 
 /*
@@ -38,9 +40,19 @@ Route::prefix('public')->group(function () {
     Route::get('/contacts/{key}', [ContactInfoController::class, 'getByKey'])
          ->name('api.contacts.bykey');
 
-    // Galerie publique
-    Route::get('/gallery', [GalleryImageController::class, 'index'])
-         ->name('api.gallery.public');
+    // Nouvelles galeries publiques
+    Route::get('/before-after-images', [BeforeAfterImageController::class, 'index'])
+         ->name('api.before-after.public');
+    
+    Route::get('/portfolio-images', [PortfolioImageController::class, 'index'])
+         ->name('api.portfolio.public');
+    
+    Route::get('/portfolio-categories', [PortfolioImageController::class, 'categories'])
+         ->name('api.portfolio.categories');
+
+    // FAQ publiques
+    Route::get('/faq', [FAQController::class, 'index'])
+         ->name('api.faq.public');
 });
 
 // ============================================================================
@@ -105,26 +117,54 @@ Route::middleware(['admin.auth'])->prefix('admin')->group(function () {
     });
 
     // ========================================
-    // GESTION DE LA GALERIE
+    // GESTION GALERIE BEFORE/AFTER
     // ========================================
-    Route::prefix('gallery')->group(function () {
-        Route::get('/', [GalleryImageController::class, 'adminIndex'])
-             ->name('api.admin.gallery.index');
+    Route::prefix('before-after')->group(function () {
+        Route::get('/', [BeforeAfterImageController::class, 'adminIndex'])
+             ->name('api.admin.before-after.index');
         
-        Route::post('/', [GalleryImageController::class, 'store'])
-             ->name('api.admin.gallery.store');
+        Route::post('/', [BeforeAfterImageController::class, 'store'])
+             ->name('api.admin.before-after.store');
         
-        Route::put('/{galleryImage}', [GalleryImageController::class, 'update'])
-             ->name('api.admin.gallery.update');
+        Route::put('/{beforeAfterImage}', [BeforeAfterImageController::class, 'update'])
+             ->name('api.admin.before-after.update');
         
-        Route::delete('/{galleryImage}', [GalleryImageController::class, 'destroy'])
-             ->name('api.admin.gallery.destroy');
+        Route::delete('/{beforeAfterImage}', [BeforeAfterImageController::class, 'destroy'])
+             ->name('api.admin.before-after.destroy');
+    });
+
+    // ========================================
+    // GESTION GALERIE PORTFOLIO
+    // ========================================
+    Route::prefix('portfolio')->group(function () {
+        Route::get('/', [PortfolioImageController::class, 'adminIndex'])
+             ->name('api.admin.portfolio.index');
         
-        Route::patch('/{galleryImage}/toggle', [GalleryImageController::class, 'toggle'])
-             ->name('api.admin.gallery.toggle');
+        Route::post('/', [PortfolioImageController::class, 'store'])
+             ->name('api.admin.portfolio.store');
         
-        Route::post('/reorder', [GalleryImageController::class, 'reorder'])
-             ->name('api.admin.gallery.reorder');
+        Route::put('/{portfolioImage}', [PortfolioImageController::class, 'update'])
+             ->name('api.admin.portfolio.update');
+        
+        Route::delete('/{portfolioImage}', [PortfolioImageController::class, 'destroy'])
+             ->name('api.admin.portfolio.destroy');
+    });
+
+    // ========================================
+    // GESTION FAQ
+    // ========================================
+    Route::prefix('faq')->group(function () {
+        Route::get('/', [FAQController::class, 'adminIndex'])
+             ->name('api.admin.faq.index');
+        
+        Route::post('/', [FAQController::class, 'store'])
+             ->name('api.admin.faq.store');
+        
+        Route::put('/{faq}', [FAQController::class, 'update'])
+             ->name('api.admin.faq.update');
+        
+        Route::delete('/{faq}', [FAQController::class, 'destroy'])
+             ->name('api.admin.faq.destroy');
     });
 
     // ========================================
@@ -139,9 +179,17 @@ Route::middleware(['admin.auth'])->prefix('admin')->group(function () {
                     'active' => \App\Models\Testimonial::where('is_active', true)->count(),
                     'recent' => \App\Models\Testimonial::where('created_at', '>=', now()->subDays(30))->count()
                 ],
-                'gallery' => [
-                    'total' => \App\Models\GalleryImage::count(),
-                    'active' => \App\Models\GalleryImage::where('is_active', true)->count()
+                'before_after' => [
+                    'total' => \App\Models\BeforeAfterImage::count(),
+                    'active' => \App\Models\BeforeAfterImage::where('is_active', true)->count()
+                ],
+                'portfolio' => [
+                    'total' => \App\Models\PortfolioImage::count(),
+                    'active' => \App\Models\PortfolioImage::where('is_active', true)->count()
+                ],
+                'faq' => [
+                    'total' => \App\Models\FAQ::count(),
+                    'active' => \App\Models\FAQ::where('is_active', true)->count()
                 ],
                 'contacts' => [
                     'total' => \App\Models\ContactInfo::count(),
