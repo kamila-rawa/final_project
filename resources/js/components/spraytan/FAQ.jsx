@@ -1,45 +1,56 @@
+// resources/js/components/spraytan/FAQ.jsx
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function FAQ({ faqItems = [] }) {
+export default function FAQ() {
     const { t } = useTranslation();
     const [openItems, setOpenItems] = useState(new Set());
 
-    // FAQ par défaut si pas de contenu dynamique
-    const defaultFAQ = [
+    // FAQ statique en dur - plus simple !
+    const faqData = [
         {
             id: 1,
-            question: t('faq.q1', 'How long does a spray tan last?'),
-            answer: t('faq.a1', 'A professional spray tan typically lasts 7-10 days, depending on your skin type and aftercare routine.')
+            questionKey: 'faq.q1',
+            answerKey: 'faq.a1',
+            questionDefault: 'Jak długo utrzymuje się opalenizna?',
+            answerDefault: 'Opalenizna spray tan utrzymuje się 7-10 dni przy odpowiedniej pielęgnacji.'
         },
         {
             id: 2,
-            question: t('faq.q2', 'How should I prepare for my appointment?'),
-            answer: t('faq.a2', 'Exfoliate 24 hours before, avoid moisturizers and deodorant on the day, and wear loose, dark clothing.')
+            questionKey: 'faq.q2',
+            answerKey: 'faq.a2',
+            questionDefault: 'Jak przygotować się do zabiegu?',
+            answerDefault: 'Dokładnie złuszcz skórę 24h wcześniej, unikaj balsamów i dezodorantów w dniu zabiegu.'
         },
         {
             id: 3,
-            question: t('faq.q3', 'Is spray tanning safe?'),
-            answer: t('faq.a3', 'Yes! Spray tanning uses DHA (dihydroxyacetone), a safe, FDA-approved ingredient that only affects the top layer of skin.')
+            questionKey: 'faq.q3',
+            answerKey: 'faq.a3',
+            questionDefault: 'Czy opalanie natryskowe jest bezpieczne?',
+            answerDefault: 'Tak! Używamy DHA (dihydroksyacetonu), bezpiecznego składnika zatwierdzonego przez FDA.'
         },
         {
             id: 4,
-            question: t('faq.q4', 'How long does the application take?'),
-            answer: t('faq.a4', 'The application process typically takes 15-20 minutes, plus time for consultation and preparation.')
+            questionKey: 'faq.q4',
+            answerKey: 'faq.a4',
+            questionDefault: 'Ile trwa aplikacja?',
+            answerDefault: 'Proces aplikacji zajmuje 15-20 minut, plus czas na konsultację i przygotowanie.'
         },
         {
             id: 5,
-            question: t('faq.q5', 'When can I shower after the treatment?'),
-            answer: t('faq.a5', 'Wait at least 8-12 hours before your first shower to allow the tan to fully develop.')
+            questionKey: 'faq.q5',
+            answerKey: 'faq.a5',
+            questionDefault: 'Kiedy mogę się wykąpać po zabiegu?',
+            answerDefault: 'Poczekaj co najmniej 8-12 godzin przed pierwszym prysznicem, aby opalenizna mogła się rozwinąć.'
         },
         {
             id: 6,
-            question: t('faq.q6', 'Can I exercise after spray tanning?'),
-            answer: t('faq.a6', 'Avoid sweating and exercise for the first 8-12 hours to prevent streaking and uneven color development.')
+            questionKey: 'faq.q6',
+            answerKey: 'faq.a6',
+            questionDefault: 'Czy mogę ćwiczyć po opalaniu natryskowym?',
+            answerDefault: 'Unikaj pocenia się i ćwiczeń przez pierwsze 8-12 godzin, aby zapobiec plamom.'
         }
     ];
-
-    const displayItems = faqItems.length > 0 ? faqItems : defaultFAQ;
 
     const toggleItem = (itemId) => {
         const newOpenItems = new Set(openItems);
@@ -56,15 +67,15 @@ export default function FAQ({ faqItems = [] }) {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                        {t('faq.title', 'Frequently Asked Questions')}
+                        {t('faq.title', 'Często Zadawane Pytania')}
                     </h2>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        {t('faq.subtitle', 'Everything you need to know about spray tanning')}
+                        {t('faq.subtitle', 'Wszystko co musisz wiedzieć o opalaniu natryskowym')}
                     </p>
                 </div>
 
                 <div className="space-y-4">
-                    {displayItems.map((item) => (
+                    {faqData.map((item) => (
                         <div
                             key={item.id}
                             className="bg-white rounded-lg shadow-md overflow-hidden"
@@ -74,7 +85,7 @@ export default function FAQ({ faqItems = [] }) {
                                 className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                             >
                                 <span className="font-semibold text-gray-900 pr-4">
-                                    {item.question}
+                                    {t(item.questionKey, item.questionDefault)}
                                 </span>
                                 <span className={`text-amber-600 transition-transform duration-200 ${
                                     openItems.has(item.id) ? 'rotate-180' : ''
@@ -98,7 +109,7 @@ export default function FAQ({ faqItems = [] }) {
                             {openItems.has(item.id) && (
                                 <div className="px-6 pb-4 border-t border-gray-100">
                                     <div className="pt-4 text-gray-700 leading-relaxed">
-                                        {item.answer}
+                                        {t(item.answerKey, item.answerDefault)}
                                     </div>
                                 </div>
                             )}
@@ -109,13 +120,13 @@ export default function FAQ({ faqItems = [] }) {
                 {/* CTA après FAQ */}
                 <div className="text-center mt-12">
                     <p className="text-gray-600 mb-4">
-                        {t('faq.stillQuestions', 'Still have questions?')}
+                        {t('faq.stillQuestions', 'Masz jeszcze pytania?')}
                     </p>
                     <button
                         onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                         className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                     >
-                        {t('faq.contactUs', 'Contact Us')}
+                        {t('faq.contactUs', 'Skontaktuj się z nami')}
                     </button>
                 </div>
             </div>

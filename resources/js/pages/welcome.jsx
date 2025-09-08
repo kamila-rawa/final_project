@@ -5,45 +5,56 @@ import { Head, usePage } from '@inertiajs/react';
 import Header from '@/components/spraytan/Header';
 import Hero from '@/components/spraytan/Hero';
 import About from '@/components/spraytan/About';
-import Process from '@/components/spraytan/Process';
 import BeforeAfterGallery from '@/components/spraytan/BeforeAfterGallery';
-import PortfolioGallery from '@/components/spraytan/PortfolioGallery';
 import Testimonials from '@/components/spraytan/Testimonials';
+import PortfolioGallery from '@/components/spraytan/PortfolioGallery';
+import FAQ from '@/components/spraytan/FAQ';
 import CTA from '@/components/spraytan/CTA';
 import Footer from '@/components/spraytan/Footer';
 import LanguageSwitcher from '@/components/spraytan/LanguageSwitcher';
-
-// Import pour l'internationalisation
-import { useTranslation } from 'react-i18next';
+import Process from '@/components/spraytan/Process';
+import '../i18n';
 
 export default function Welcome() {
     const { auth } = usePage().props;
-    const { t, i18n } = useTranslation();
     
     // États pour le contenu dynamique
     const [testimonials, setTestimonials] = useState([]);
     const [contactInfo, setContactInfo] = useState({});
+    const [beforeAfterImages, setBeforeAfterImages] = useState([]);
+    const [portfolioImages, setPortfolioImages] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [currentLanguage, setCurrentLanguage] = useState('pl');
 
     // Chargement des données dynamiques
     useEffect(() => {
         fetchDynamicContent();
-    }, [i18n.language]);
+    }, [currentLanguage]);
 
     const fetchDynamicContent = async () => {
         try {
             setLoading(true);
             
             // Appel API pour récupérer les témoignages
-            const testimonialsResponse = await fetch(`/api/testimonials?lang=${i18n.language}`);
+            const testimonialsResponse = await fetch(`/api/public/testimonials?lang=${currentLanguage}`);
             const testimonialsData = await testimonialsResponse.json();
             
             // Appel API pour récupérer les infos de contact
-            const contactResponse = await fetch(`/api/contact-info?lang=${i18n.language}`);
+            const contactResponse = await fetch(`/api/public/contacts?lang=${currentLanguage}`);
             const contactData = await contactResponse.json();
+            
+            // Appel API pour récupérer les images before/after
+            const beforeAfterResponse = await fetch(`/api/public/before-after-images?lang=${currentLanguage}`);
+            const beforeAfterData = await beforeAfterResponse.json();
+            
+            // Appel API pour récupérer les images portfolio
+            const portfolioResponse = await fetch(`/api/public/portfolio-images?lang=${currentLanguage}`);
+            const portfolioData = await portfolioResponse.json();
             
             setTestimonials(testimonialsData);
             setContactInfo(contactData);
+            setBeforeAfterImages(beforeAfterData);
+            setPortfolioImages(portfolioData);
         } catch (error) {
             console.error('Erreur lors du chargement des données:', error);
             // Fallback avec des données par défaut
@@ -55,6 +66,8 @@ export default function Welcome() {
                 instagram: '@spraytan_poland',
                 facebook: 'SprayTanPoland'
             });
+            setBeforeAfterImages([]);
+            setPortfolioImages([]);
         } finally {
             setLoading(false);
         }
@@ -62,7 +75,23 @@ export default function Welcome() {
 
     // Fonction pour changer la langue
     const changeLanguage = (lang) => {
-        i18n.changeLanguage(lang);
+        setCurrentLanguage(lang);
+    };
+
+    // Traductions simples pour les métadonnées uniquement
+    const t = (key, defaultValue = '') => {
+        const translations = {
+            pl: {
+                'meta.title': 'Profesjonalne Usługi Spray Tan w Polsce',
+                'meta.description': 'Uzyskaj idealną opaleniznę dzięki profesjonalnym usługom spray tan. Bezpieczne, naturalnie wyglądające rezultaty. Zarezerwuj wizytę już dziś!'
+            },
+            en: {
+                'meta.title': 'Professional Spray Tan Services in Poland',
+                'meta.description': 'Get the perfect golden tan with professional spray tan services. Safe, natural-looking results. Book your appointment today!'
+            }
+        };
+        
+        return translations[currentLanguage]?.[key] || defaultValue;
     };
 
     return (
@@ -87,7 +116,7 @@ export default function Welcome() {
             <div className="min-h-screen bg-white">
                 {/* Switcher de langue fixe */}
                 <LanguageSwitcher 
-                    currentLanguage={i18n.language}
+                    currentLanguage={currentLanguage}
                     onLanguageChange={changeLanguage}
                     className="fixed top-4 right-4 z-50"
                 />
@@ -98,38 +127,29 @@ export default function Welcome() {
                 {/* Section Hero */}
                 <Hero />
 
-                {/* Section À propos */}
-                <About />
-
-                {/* Section Processus */}
+                {/* Section Processus (étapes du spray tan) */}
                 <Process />
 
-                {/* Galerie Before & After */}
-                <BeforeAfterGallery 
-                    beforeAfterImages={beforeAfterImages}
-                />
+                {/* Section À propos (présentation de ta cousine) */}
+                <About />
 
-                {/* Galerie Portfolio */}
-                <PortfolioGallery 
-                    portfolioImages={portfolioImages}
-                />
+                {/* Galerie Before & After (transformations) */}
+                <BeforeAfterGallery />
 
-                {/* Témoignages */}
-                {!loading && (
-                    <Testimonials 
-                        testimonials={testimonials}
-                        loading={loading}
-                    />
-                )}
+                {/* Témoignages clients */}
+                <Testimonials />
+
+                {/* Galerie Portfolio (salon, produits, équipements) */}
+                <PortfolioGallery />
+
+                {/* FAQ (statique) */}
+                <FAQ />
 
                 {/* Call to Action / Contact */}
-                <CTA 
-                    contactInfo={contactInfo}
-                    loading={loading}
-                />
+                <CTA />
 
                 {/* Footer */}
-                <Footer contactInfo={contactInfo} />
+                <Footer />
 
                 {/* Admin quick access (if authenticated) */}
                 {auth.user && (

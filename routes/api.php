@@ -7,7 +7,6 @@ use App\Http\Controllers\Api\TestimonialController;
 use App\Http\Controllers\Api\ContactInfoController;
 use App\Http\Controllers\Api\BeforeAfterImageController;
 use App\Http\Controllers\Api\PortfolioImageController;
-use App\Http\Controllers\Api\FAQController;
 use App\Http\Controllers\Auth\AdminAuthController;
 
 /*
@@ -49,10 +48,6 @@ Route::prefix('public')->group(function () {
     
     Route::get('/portfolio-categories', [PortfolioImageController::class, 'categories'])
          ->name('api.portfolio.categories');
-
-    // FAQ publiques
-    Route::get('/faq', [FAQController::class, 'index'])
-         ->name('api.faq.public');
 });
 
 // ============================================================================
@@ -151,23 +146,6 @@ Route::middleware(['admin.auth'])->prefix('admin')->group(function () {
     });
 
     // ========================================
-    // GESTION FAQ
-    // ========================================
-    Route::prefix('faq')->group(function () {
-        Route::get('/', [FAQController::class, 'adminIndex'])
-             ->name('api.admin.faq.index');
-        
-        Route::post('/', [FAQController::class, 'store'])
-             ->name('api.admin.faq.store');
-        
-        Route::put('/{faq}', [FAQController::class, 'update'])
-             ->name('api.admin.faq.update');
-        
-        Route::delete('/{faq}', [FAQController::class, 'destroy'])
-             ->name('api.admin.faq.destroy');
-    });
-
-    // ========================================
     // DASHBOARD STATS
     // ========================================
     Route::get('/stats', function () {
@@ -186,10 +164,6 @@ Route::middleware(['admin.auth'])->prefix('admin')->group(function () {
                 'portfolio' => [
                     'total' => \App\Models\PortfolioImage::count(),
                     'active' => \App\Models\PortfolioImage::where('is_active', true)->count()
-                ],
-                'faq' => [
-                    'total' => \App\Models\FAQ::count(),
-                    'active' => \App\Models\FAQ::where('is_active', true)->count()
                 ],
                 'contacts' => [
                     'total' => \App\Models\ContactInfo::count(),
