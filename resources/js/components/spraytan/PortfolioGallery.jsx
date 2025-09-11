@@ -9,23 +9,58 @@ export default function PortfolioGallery() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Récupération du portfolio via API
+  // Récupération du portfolio via API Laravel
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/portfolio?lang=${i18n.language}`);
+        const response = await fetch(`/api/public/portfolio-images?lang=${i18n.language}`, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        });
         
         if (!response.ok) {
           throw new Error('Erreur lors du chargement du portfolio');
         }
         
         const data = await response.json();
-        setPortfolioItems(data);
+        
+        // Gérer le format de réponse (array direct ou dans result.data)
+        const portfolioArray = Array.isArray(data) ? data : (data.data || []);
+        setPortfolioItems(portfolioArray);
         
       } catch (err) {
         setError(err.message);
         console.error('Erreur portfolio:', err);
+        // Données de fallback pour tests
+        setPortfolioItems([
+          {
+            id: 1,
+            title: 'Spray Tan Naturalny',
+            description: 'Efekt naturalnego opalenia',
+            image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400',
+            category: 'salon',
+            alt_text: 'Naturalny spray tan'
+          },
+          {
+            id: 2,
+            title: 'Profesjonalny Sprzęt',
+            description: 'Nowoczesne urządzenia spray tan',
+            image: 'https://images.unsplash.com/photo-1594736797933-d0de07ba79a3?w=400',
+            category: 'equipment',
+            alt_text: 'Sprzęt do spray tan'
+          },
+          {
+            id: 3,
+            title: 'Produkty Premium',
+            description: 'Wysokiej jakości kosmetyki',
+            image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400',
+            category: 'products',
+            alt_text: 'Produkty spray tan'
+          }
+        ]);
       } finally {
         setLoading(false);
       }
@@ -67,7 +102,7 @@ export default function PortfolioGallery() {
       <section id="portfolio" className="py-16 bg-gradient-to-b from-white to-amber-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-amber-900 mb-12">
-            {t('portfolio.title', 'Notre Portfolio')}
+            {t('portfolio.title', 'Nasze Portfolio')}
           </h2>
           <div className="flex justify-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
@@ -82,10 +117,10 @@ export default function PortfolioGallery() {
       <section id="portfolio" className="py-16 bg-gradient-to-b from-white to-amber-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-amber-900 mb-12">
-            {t('portfolio.title', 'Notre Portfolio')}
+            {t('portfolio.title', 'Nasze Portfolio')}
           </h2>
           <div className="text-center text-red-600">
-            <p>{t('portfolio.error', 'Erreur lors du chargement du portfolio')}</p>
+            <p>{t('portfolio.error', 'Błąd podczas ładowania portfolio')}</p>
           </div>
         </div>
       </section>
@@ -97,10 +132,10 @@ export default function PortfolioGallery() {
       <section id="portfolio" className="py-16 bg-gradient-to-b from-white to-amber-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-amber-900 mb-4">
-            {t('portfolio.title', 'Notre Portfolio')}
+            {t('portfolio.title', 'Nasze Portfolio')}
           </h2>
           <p className="text-center text-amber-700 mb-12 max-w-2xl mx-auto">
-            {t('portfolio.subtitle', 'Découvrez nos réalisations et laissez-vous inspirer par nos créations')}
+            {t('portfolio.subtitle', 'Zobacz nasze realizacje i zainspiruj się naszymi pracami')}
           </p>
 
           {/* Filtres par catégorie */}
@@ -116,7 +151,13 @@ export default function PortfolioGallery() {
                 }`}
                 aria-pressed={selectedCategory === category}
               >
-                {t(`portfolio.category.${category}`, category === 'all' ? 'Tout' : category)}
+                {t(`portfolio.category.${category}`, 
+                  category === 'all' ? 'Wszystkie' : 
+                  category === 'salon' ? 'Salon' :
+                  category === 'products' ? 'Produkty' :
+                  category === 'equipment' ? 'Sprzęt' :
+                  category === 'other' ? 'Inne' : category
+                )}
               </button>
             ))}
           </div>
@@ -131,12 +172,12 @@ export default function PortfolioGallery() {
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && openModal(item)}
-                aria-label={`${t('portfolio.view_image', 'Voir l\'image')} ${item.title || index + 1}`}
+                aria-label={`${t('portfolio.view_image', 'Zobacz zdjęcie')} ${item.title || index + 1}`}
               >
                 <div className="relative overflow-hidden">
                   <img
-                    src={item.image_url}
-                    alt={item.title || `Portfolio image ${index + 1}`}
+                    src={item.image || item.image_url}
+                    alt={item.alt_text || item.title || `Portfolio obraz ${index + 1}`}
                     className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
@@ -162,7 +203,12 @@ export default function PortfolioGallery() {
 
                   {/* Badge catégorie */}
                   <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
-                    {t(`portfolio.category.${item.category}`, item.category)}
+                    {t(`portfolio.category.${item.category}`, 
+                      item.category === 'salon' ? 'Salon' :
+                      item.category === 'products' ? 'Produkty' :
+                      item.category === 'equipment' ? 'Sprzęt' :
+                      item.category === 'other' ? 'Inne' : item.category
+                    )}
                   </div>
                 </div>
 
@@ -192,23 +238,23 @@ export default function PortfolioGallery() {
               <svg className="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <p>{t('portfolio.no_items', 'Aucun élément dans cette catégorie')}</p>
+              <p>{t('portfolio.no_items', 'Brak elementów w tej kategorii')}</p>
             </div>
           )}
 
           {/* Call-to-Action */}
           <div className="text-center mt-16">
             <h3 className="text-2xl font-bold text-amber-900 mb-4">
-              {t('portfolio.cta_title', 'Prêt pour votre transformation ?')}
+              {t('portfolio.cta_title', 'Gotowa na swoją transformację?')}
             </h3>
             <p className="text-amber-700 mb-6 max-w-xl mx-auto">
-              {t('portfolio.cta_description', 'Contactez-nous pour découvrir comment nous pouvons vous aider à obtenir le bronzage parfait')}
+              {t('portfolio.cta_description', 'Skontaktuj się z nami, aby dowiedzieć się, jak możemy pomóc Ci uzyskać idealny spray tan')}
             </p>
             <a 
               href="#contact" 
               className="inline-block bg-gradient-to-r from-amber-500 to-amber-600 text-white px-8 py-3 rounded-full font-semibold hover:from-amber-600 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              {t('portfolio.contact_us', 'Nous contacter')}
+              {t('portfolio.contact_us', 'Skontaktuj się z nami')}
             </a>
           </div>
         </div>
@@ -221,7 +267,7 @@ export default function PortfolioGallery() {
           onClick={closeModal}
           role="dialog"
           aria-modal="true"
-          aria-label={t('portfolio.modal_title', 'Image agrandie')}
+          aria-label={t('portfolio.modal_title', 'Powiększony obraz')}
         >
           <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
             {/* En-tête du modal */}
@@ -237,7 +283,7 @@ export default function PortfolioGallery() {
               <button
                 onClick={closeModal}
                 className="text-white hover:text-amber-300 transition-colors p-2"
-                aria-label={t('portfolio.close', 'Fermer')}
+                aria-label={t('portfolio.close', 'Zamknij')}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -248,7 +294,7 @@ export default function PortfolioGallery() {
             {/* Image principale */}
             <div className="relative">
               <img
-                src={selectedImage.image_url}
+                src={selectedImage.image || selectedImage.image_url}
                 alt={selectedImage.title || 'Portfolio image'}
                 className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
               />
@@ -262,7 +308,7 @@ export default function PortfolioGallery() {
               
               <div className="flex justify-center space-x-6 text-sm opacity-75">
                 {selectedImage.client_type && (
-                  <span>{t('portfolio.client_type', 'Type de client')}: {selectedImage.client_type}</span>
+                  <span>{t('portfolio.client_type', 'Typ klienta')}: {selectedImage.client_type}</span>
                 )}
                 {selectedImage.created_at && (
                   <span>
@@ -275,7 +321,7 @@ export default function PortfolioGallery() {
 
               <div className="text-center mt-4">
                 <p className="text-xs opacity-50">
-                  {t('portfolio.modal_hint', 'Appuyez sur ESC pour fermer')}
+                  {t('portfolio.modal_hint', 'Naciśnij ESC aby zamknąć')}
                 </p>
               </div>
             </div>

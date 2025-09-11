@@ -10,50 +10,64 @@ export default function Hero() {
         });
     };
 
+    const scrollToProcess = () => {
+        document.getElementById('process')?.scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    };
+
     return (
-        <section className="relative bg-gradient-to-br from-amber-50 to-orange-100 pt-16">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    {/* Contenu principal */}
-                    <div className="space-y-8">
-                        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-                            {t('hero.title', 'Perfect Golden Tan')}
-                            <span className="text-amber-600 block">
-                                {t('hero.subtitle', 'Professional Results')}
-                            </span>
-                        </h1>
-                        
-                        <p className="text-xl text-gray-600 leading-relaxed">
-                            {t('hero.description', 'Get the perfect sun-kissed glow with our professional spray tan services. Safe, natural-looking, and long-lasting results guaranteed.')}
-                        </p>
-                        
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <button
-                                onClick={scrollToContact}
-                                className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors shadow-lg hover:shadow-xl"
-                            >
-                                {t('hero.cta_primary', 'Book Appointment')}
-                            </button>
-                            <button
-                                onClick={() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
-                            >
-                                {t('hero.cta_secondary', 'Learn More')}
-                            </button>
-                        </div>
-                    </div>
+        <section className="relative isolate overflow-hidden bg-gray-900 pt-14 pb-16 sm:pb-20">
+            {/* Image de fond */}
+            <img
+                alt="Professional spray tan service"
+                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=2000&auto=format&fit=crop"
+                className="absolute inset-0 -z-10 w-full h-full object-cover"
+            />
+            
+            {/* Overlay sombre pour améliorer la lisibilité */}
+            <div className="absolute inset-0 -z-10 bg-black/50"></div>
+            
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 text-center text-white">
+                    <h1 className="text-5xl font-semibold tracking-tight sm:text-7xl">
+                        {t('hero.title', 'Like a Gold')}
+                    </h1>
+                    <p className="mt-8 text-lg font-medium text-amber-200 sm:text-xl">
+                        {t('hero.subtitle', 'Profesjonalne opalanie natryskowe')}
+                    </p>
+                    <p className="mt-6 text-base text-gray-300 sm:text-lg max-w-xl mx-auto">
+<div className="mt-6 text-base text-gray-300 sm:text-lg max-w-xl mx-auto space-y-2">
+    <p>{t('hero.description', 'Uzyskaj idealną złotą opaleniznę.')}</p>
+    <p>{t('hero.description_2', 'Bezpieczne, naturalne i długotrwałe efekty gwarantowane.')}</p>
+</div>                    </p>
                     
-                    {/* Image hero */}
-                    <div className="relative">
-                        <div className="aspect-square bg-gradient-to-br from-amber-200 to-orange-300 rounded-full flex items-center justify-center shadow-2xl">
-                            <div className="text-6xl">🌟</div>
-                        </div>
-                        {/* Placeholder pour l'image réelle */}
-                        <div className="absolute inset-0 rounded-full bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                            <span className="text-white text-sm">Photo à venir</span>
-                        </div>
+                    <div className="mt-10 flex items-center justify-center gap-x-6">
+                        <button
+                            onClick={scrollToContact}
+                            className="rounded-md bg-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-amber-400 transition-colors duration-300"
+                        >
+                            {t('hero.cta_primary', 'Zarezerwuj Wizytę')}
+                        </button>
+                        
+                        <button
+                            onClick={scrollToProcess}
+                            className="rounded-md px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-amber-600/20 transition-colors duration-300 border border-amber-500"
+                        >
+                            {t('hero.cta_secondary', 'Dowiedz się więcej')}
+                        </button>
                     </div>
                 </div>
+            </div>
+            
+            {/* Effet de dégradé en bas */}
+            <div
+                aria-hidden="true"
+                className="absolute inset-x-0 -bottom-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:bottom-[-20rem]"
+            >
+                <div
+                    className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-amber-400 to-orange-500 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                />
             </div>
         </section>
     );
