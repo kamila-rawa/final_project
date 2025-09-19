@@ -5,15 +5,47 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   pl: {
     translation: {
-      // Navigation
+      // Hero Section - AJOUTÉ
+      "hero.title": "Like a Gold",
+      "hero.subtitle": "Profesjonalne opalanie natryskowe",
+      "hero.description": "Uzyskaj idealną złotą opaleniznę.",
+      "hero.description_2": "Bezpieczne, naturalne i długotrwałe efekty gwarantowane.",
+      "hero.cta_primary": "Zarezerwuj Wizytę",
+      "hero.cta_secondary": "Dowiedz się więcej",
+
+      // Navigation - AJOUTÉ les clés manquantes
       "nav.home": "Strona główna",
-      "nav.about": "O nas",
+      "nav.about": "O mnie",
+      "nav.tanning": "Opalanie",
       "nav.services": "Usługi", 
       "nav.testimonials": "Opinie",
       "nav.gallery": "Galeria",
       "nav.portfolio": "Portfolio",
       "nav.contact": "Kontakt",
+      "nav.faq": "FAQ",
       
+      // Process Section - AJOUTÉ
+      "process.subtitle": "Szybki Sposób na Zdrową Opaleniznę",
+      "process.title": "Opalanie Natryskowe",
+      "process.description": "Opalanie natryskowe to bezpieczna i szybka metoda uzyskania pięknej, równomiernej opalenizny bez konieczności wystawiania skóry na szkodliwe promieniowanie UV.",
+      "process.intro": "Opalanie natryskowe jest szczególnie polecane przed ważnymi wydarzeniami, takimi jak wesela, sesje zdjęciowe czy wakacje, zapewniając zdrowy i promienny wygląd skóry.",
+      "process.benefit1.title": "Szybki efekt.",
+      "process.benefit1.description": "Efekt opalenizny jest widoczny natychmiast po aplikacji i osiąga pełną intensywność w ciągu kilku godzin.",
+      "process.benefit2.title": "Bezpieczeństwo dla skóry.",
+      "process.benefit2.description": "Unikasz szkodliwego promieniowania UV, które może prowadzić do starzenia się skóry i zwiększa ryzyko raka skóry.",
+      "process.benefit3.title": "Równomierna opalenizna.",
+      "process.benefit3.description": "Profesjonalne opalanie natryskowe zapewnia równomierną aplikację bez smug i plam.",
+      "process.details": "Podczas zabiegu specjalny preparat z substancją aktywną DHA (dihydroksyaceton) jest równomiernie aplikowany na skórę za pomocą natrysku. Efekt opalenizny pojawia się już po kilku godzinach, a pełna intensywność koloru rozwija się w ciągu 24 godzin. Opalenizna utrzymuje się zwykle od 5 do 10 dni, w zależności od pielęgnacji skóry.",
+      "process.preparation.title": "Jak przygotować się do zabiegu?",
+      "process.preparation.description": "Przed zabiegiem dokładnie oczyść i złuszcz skórę, unikaj balsamów, olejków, perfum oraz makijażu. W dniu zabiegu załóż luźne, ciemne ubrania. Po aplikacji unikaj kontaktu z wodą przez kilka godzin, aby opalenizna mogła się utrwalić.",
+      
+      // CTA Section - AJOUTÉ les clés manquantes
+      "cta.appointment_on_demand": "Wizyty po telefonicznym umówieniu",
+      
+      // Métadonnées - AJOUTÉ
+      "meta.title": "Profesjonalne Usługi Spray Tan w Polsce - Like a Gold",
+      "meta.description": "Uzyskaj idealną opaleniznę dzięki profesjonalnym usługom spray tan. Bezpieczne, naturalnie wyglądające rezultaty. Zarezerwuj wizytę już dziś!",
+
       // Témoignages
       "testimonials.title": "Opinie klientów",
       "testimonials.subtitle": "Poznaj opinie naszych zadowolonych klientów",
@@ -101,15 +133,47 @@ const resources = {
   },
   en: {
     translation: {
-      // Navigation
+      // Hero Section - AJOUTÉ
+      "hero.title": "Like a Gold",
+      "hero.subtitle": "Professional spray tanning",
+      "hero.description": "Get the perfect golden tan.",
+      "hero.description_2": "Safe, natural and long-lasting effects guaranteed.",
+      "hero.cta_primary": "Book Appointment",
+      "hero.cta_secondary": "Learn more",
+
+      // Navigation - AJOUTÉ les clés manquantes
       "nav.home": "Home",
-      "nav.about": "About",
+      "nav.about": "About me",
+      "nav.tanning": "Tanning",
       "nav.services": "Services",
       "nav.testimonials": "Testimonials",
       "nav.gallery": "Gallery",
       "nav.portfolio": "Portfolio",
       "nav.contact": "Contact",
+      "nav.faq": "FAQ",
       
+      // Process Section - AJOUTÉ
+      "process.subtitle": "Quick Way to Healthy Tan",
+      "process.title": "Spray Tanning",
+      "process.description": "Spray tanning is a safe and quick method to achieve a beautiful, even tan without exposing your skin to harmful UV radiation.",
+      "process.intro": "Spray tanning is especially recommended before important events such as weddings, photo shoots, or vacations, providing a healthy and radiant skin appearance.",
+      "process.benefit1.title": "Quick effect.",
+      "process.benefit1.description": "The tanning effect is visible immediately after application and reaches full intensity within hours.",
+      "process.benefit2.title": "Skin safety.",
+      "process.benefit2.description": "You avoid harmful UV radiation that can lead to skin aging and increase the risk of skin cancer.",
+      "process.benefit3.title": "Even tan.",
+      "process.benefit3.description": "Professional spray tanning ensures even application without streaks and spots.",
+      "process.details": "During the treatment, a special preparation with the active substance DHA (dihydroxyacetone) is evenly applied to the skin using spray. The tanning effect appears within hours, and full color intensity develops within 24 hours. The tan typically lasts 5 to 10 days, depending on skin care.",
+      "process.preparation.title": "How to prepare for the treatment?",
+      "process.preparation.description": "Before treatment, thoroughly cleanse and exfoliate your skin, avoid lotions, oils, perfumes, and makeup. On the day of treatment, wear loose, dark clothing. After application, avoid contact with water for several hours so the tan can set.",
+      
+      // CTA Section - AJOUTÉ les clés manquantes
+      "cta.appointment_on_demand": "Appointments by phone arrangement",
+      
+      // Métadonnées - AJOUTÉ
+      "meta.title": "Professional Spray Tan Services in Poland - Like a Gold",
+      "meta.description": "Get the perfect golden tan with professional spray tan services. Safe, natural-looking results. Book your appointment today!",
+
       // Testimonials
       "testimonials.title": "Client Testimonials",
       "testimonials.subtitle": "Discover the reviews of our satisfied clients",

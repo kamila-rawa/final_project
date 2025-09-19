@@ -2,108 +2,113 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function Process() {
-  const { t } = useTranslation();
-  const steps = [
-    {
-      id: 1,
-      title: t('process.step1.title', 'Consultation'),
-      description: t('process.step1.description', 'Nous analysons votre type de peau et vos attentes pour choisir la teinte parfaite.'),
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-        </svg>
-      )
-    },
-    {
-      id: 2,
-      title: t('process.step2.title', 'Préparation'),
-      description: t('process.step2.description', 'Exfoliation douce et préparation de la peau pour une application uniforme.'),
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-      )
-    },
-    {
-      id: 3,
-      title: t('process.step3.title', 'Application'),
-      description: t('process.step3.description', 'Application professionnelle du spray tan avec une technique uniforme et naturelle.'),
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0V3a1 1 0 011-1h8a1 1 0 011 1v1M7 4l1 16h8l1-16M10 8v8m4-8v8" />
-        </svg>
-      )
-    },
-    {
-      id: 4,
-      title: t('process.step4.title', 'Séchage & Conseils'),
-      description: t('process.step4.description', 'Temps de séchage optimal et conseils personnalisés pour maintenir votre bronzage.'),
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-      )
-    }
-  ];
+    const { t } = useTranslation();
 
-  return (
-    <section id="process" className="py-16 bg-gradient-to-b from-white to-amber-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-amber-900 mb-4">
-            {t('process.title', 'Notre Processus')}
-          </h2>
-          <p className="text-amber-700 max-w-2xl mx-auto">
-            {t('process.subtitle', 'Découvrez notre méthode professionnelle en 4 étapes pour un bronzage parfait et naturel')}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, index) => (
-            <div key={step.id} className="relative">
-              {/* Ligne de connexion (sauf pour le dernier élément) */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-amber-200 transform translate-x-4"></div>
-              )}
-              
-              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 text-center group hover:-translate-y-2">
-                {/* Numéro de l'étape */}
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-full font-bold text-lg mb-4 group-hover:scale-110 transition-transform">
-                  {step.id}
-                </div>
-
-                {/* Icône */}
-                <div className="text-amber-600 mb-4 flex justify-center group-hover:text-amber-700 transition-colors">
-                  {step.icon}
-                </div>
-
-                {/* Titre */}
-                <h3 className="text-xl font-semibold text-amber-900 mb-3">
-                  {step.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-amber-700 text-sm leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
+    return (
+        <div id="process" className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
+            <div className="absolute inset-0 -z-10 overflow-hidden">
+                <svg
+                    aria-hidden="true"
+                    className="absolute top-0 left-[max(50%,25rem)] h-[64rem] w-[128rem] -translate-x-1/2 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)] stroke-red-200"
+                >
+                    <defs>
+                        <pattern
+                            x="50%"
+                            y={-1}
+                            id="e813992c-7d03-4cc4-a2bd-151760b470a0"
+                            width={200}
+                            height={200}
+                            patternUnits="userSpaceOnUse"
+                        >
+                            <path d="M100 200V.5M.5 .5H200" fill="none" />
+                        </pattern>
+                    </defs>
+                    <svg x="50%" y={-1} className="overflow-visible fill-yellow-100">
+                        <path
+                            d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z"
+                            strokeWidth={0}
+                        />
+                    </svg>
+                    <rect fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)" width="100%" height="100%" strokeWidth={0} />
+                </svg>
             </div>
-          ))}
+            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
+                <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+                    <div className="lg:pr-4">
+                        <div className="lg:max-w-lg">
+                            <p className="text-base/7 font-semibold text-amber-600">
+                                {t('process.subtitle', 'Szybki Sposób na Zdrową Opaleniznę')}
+                            </p>
+                            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+                                {t('process.title', 'Opalanie Natryskowe')}
+                            </h1>
+                            <p className="mt-6 text-xl/8 text-amber-700">
+                                {t('process.description', 'Opalanie natryskowe to bezpieczna i szybka metoda uzyskania pięknej, równomiernej opalenizny bez konieczności wystawiania skóry na szkodliwe promieniowanie UV.')}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+                    <img
+                        alt="Professional spray tan transformation"
+                        src="/photos/process.jpg"
+                        className="w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
+                    />
+                </div>
+                <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+                    <div className="lg:pr-4">
+                        <div className="max-w-xl text-base/7 text-gray-700 lg:max-w-lg">
+                            <p>
+                                {t('process.intro', 'Opalanie natryskowe jest szczególnie polecane przed ważnymi wydarzeniami, takimi jak wesela, sesje zdjęciowe czy wakacje, zapewniając zdrowy i promienny wygląd skóry.')}
+                            </p>
+                            <ul role="list" className="mt-8 space-y-8 text-gray-600">
+                                <li className="flex gap-x-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="mt-1 size-5 flex-none text-amber-600">
+                                        <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clipRule="evenodd" />
+                                    </svg>
+                                    <span>
+                                        <strong className="font-semibold text-amber-900">
+                                            {t('process.benefit1.title', 'Szybki efekt.')}
+                                        </strong>{' '}
+                                        {t('process.benefit1.description', 'Efekt opalenizny jest widoczny natychmiast po aplikacji i osiąga pełną intensywność w ciągu kilku godzin.')}
+                                    </span>
+                                </li>
+                                <li className="flex gap-x-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="mt-1 size-5 flex-none text-amber-600">
+                                        <path d="M7.493 18.5c-.425 0-.82-.236-.975-.632A7.48 7.48 0 0 1 6 15.125c0-1.75.599-3.358 1.602-4.634.151-.192.373-.309.6-.397.473-.183.89-.514 1.212-.924a9.042 9.042 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75A.75.75 0 0 1 15 2a2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H14.23c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23h-.777ZM2.331 10.727a11.969 11.969 0 0 0-.831 4.398 12 12 0 0 0 .52 3.507C2.28 19.482 3.105 20 3.994 20H4.9c.445 0 .72-.498.523-.898a8.963 8.963 0 0 1-.924-3.977c0-1.708.476-3.305 1.302-4.666.245-.403-.028-.959-.5-.959H4.25c-.832 0-1.612.453-1.918 1.227Z" />
+                                    </svg>
+                                    <span>
+                                        <strong className="font-semibold text-amber-900">
+                                            {t('process.benefit2.title', 'Bezpieczeństwo dla skóry.')}
+                                        </strong>{' '}
+                                        {t('process.benefit2.description', 'Unikasz szkodliwego promieniowania UV, które może prowadzić do starzenia się skóry i zwiększa ryzyko raka skóry.')}
+                                    </span>
+                                </li>
+                                <li className="flex gap-x-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="mt-1 size-5 flex-none text-amber-600">
+                                        <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                                    </svg>
+                                    <span>
+                                        <strong className="font-semibold text-amber-900">
+                                            {t('process.benefit3.title', 'Równomierna opalenizna.')}
+                                        </strong>{' '}
+                                        {t('process.benefit3.description', 'Profesjonalne opalanie natryskowe zapewnia równomierną aplikację bez smug i plam.')}
+                                    </span>
+                                </li>
+                            </ul>
+                            <p className="mt-8">
+                                {t('process.details', 'Podczas zabiegu specjalny preparat z substancją aktywną DHA (dihydroksyaceton) jest równomiernie aplikowany na skórę za pomocą natrysku. Efekt opalenizny pojawia się już po kilku godzinach, a pełna intensywność koloru rozwija się w ciągu 24 godzin. Opalenizna utrzymuje się zwykle od 5 do 10 dni, w zależności od pielęgnacji skóry.')}
+                            </p>
+                            <h2 className="mt-16 text-2xl font-bold tracking-tight text-amber-900">
+                                {t('process.preparation.title', 'Jak przygotować się do zabiegu?')}
+                            </h2>
+                            <p className="mt-6">
+                                {t('process.preparation.description', 'Przed zabiegiem dokładnie oczyść i złuszcz skórę, unikaj balsamów, olejków, perfum oraz makijażu. W dniu zabiegu załóż luźne, ciemne ubrania. Po aplikacji unikaj kontaktu z wodą przez kilka godzin, aby opalenizna mogła się utrwalić.')}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        {/* Call to action */}
-        <div className="text-center mt-12">
-          <p className="text-amber-700 mb-6">
-            {t('process.cta_text', 'Prêt à découvrir votre meilleur bronzage ?')}
-          </p>
-          <a 
-            href="#contact" 
-            className="inline-block bg-gradient-to-r from-amber-500 to-amber-600 text-white px-8 py-3 rounded-full font-semibold hover:from-amber-600 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-          >
-            {t('process.cta_button', 'Réserver une consultation')}
-          </a>
-        </div>
-      </div>
-    </section>
-  );
+    );
 }

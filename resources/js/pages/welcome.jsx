@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Head, usePage } from '@inertiajs/react';
+import { useTranslation } from 'react-i18next';
 
-// Composants principaux
+// Composants principaux - nouvel ordre
 import Header from '@/components/spraytan/Header';
-import Hero from '@/components/spraytan/Hero';
 import About from '@/components/spraytan/About';
-import BeforeAfterGallery from '@/components/spraytan/BeforeAfterGallery';
-import Testimonials from '@/components/spraytan/Testimonials';
+import Hero from '@/components/spraytan/Hero';
 import PortfolioGallery from '@/components/spraytan/PortfolioGallery';
-import FAQ from '@/components/spraytan/FAQ';
 import CTA from '@/components/spraytan/CTA';
+import Testimonials from '@/components/spraytan/Testimonials';
+import BeforeAfterGallery from '@/components/spraytan/BeforeAfterGallery';
+import FAQ from '@/components/spraytan/FAQ';
 import Footer from '@/components/spraytan/Footer';
-import LanguageSwitcher from '@/components/spraytan/LanguageSwitcher';
 import Process from '@/components/spraytan/Process';
 import '../i18n';
 
 export default function Welcome() {
     const { auth } = usePage().props;
+    const { t, i18n } = useTranslation();
     
     // États pour le contenu dynamique
     const [testimonials, setTestimonials] = useState([]);
@@ -24,31 +25,30 @@ export default function Welcome() {
     const [beforeAfterImages, setBeforeAfterImages] = useState([]);
     const [portfolioImages, setPortfolioImages] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [currentLanguage, setCurrentLanguage] = useState('pl');
 
     // Chargement des données dynamiques
     useEffect(() => {
         fetchDynamicContent();
-    }, [currentLanguage]);
+    }, [i18n.language]);
 
     const fetchDynamicContent = async () => {
         try {
             setLoading(true);
             
             // Appel API pour récupérer les témoignages
-            const testimonialsResponse = await fetch(`/api/public/testimonials?lang=${currentLanguage}`);
+            const testimonialsResponse = await fetch(`/api/public/testimonials?lang=${i18n.language}`);
             const testimonialsData = await testimonialsResponse.json();
             
             // Appel API pour récupérer les infos de contact
-            const contactResponse = await fetch(`/api/public/contacts?lang=${currentLanguage}`);
+            const contactResponse = await fetch(`/api/public/contacts?lang=${i18n.language}`);
             const contactData = await contactResponse.json();
             
             // Appel API pour récupérer les images before/after
-            const beforeAfterResponse = await fetch(`/api/public/before-after-images?lang=${currentLanguage}`);
+            const beforeAfterResponse = await fetch(`/api/public/before-after-images?lang=${i18n.language}`);
             const beforeAfterData = await beforeAfterResponse.json();
             
             // Appel API pour récupérer les images portfolio
-            const portfolioResponse = await fetch(`/api/public/portfolio-images?lang=${currentLanguage}`);
+            const portfolioResponse = await fetch(`/api/public/portfolio-images?lang=${i18n.language}`);
             const portfolioData = await portfolioResponse.json();
             
             setTestimonials(testimonialsData);
@@ -73,27 +73,6 @@ export default function Welcome() {
         }
     };
 
-    // Fonction pour changer la langue
-    const changeLanguage = (lang) => {
-        setCurrentLanguage(lang);
-    };
-
-    // Traductions simples pour les métadonnées uniquement
-    const t = (key, defaultValue = '') => {
-        const translations = {
-            pl: {
-                'meta.title': 'Profesjonalne Usługi Spray Tan w Polsce',
-                'meta.description': 'Uzyskaj idealną opaleniznę dzięki profesjonalnym usługom spray tan. Bezpieczne, naturalnie wyglądające rezultaty. Zarezerwuj wizytę już dziś!'
-            },
-            en: {
-                'meta.title': 'Professional Spray Tan Services in Poland',
-                'meta.description': 'Get the perfect golden tan with professional spray tan services. Safe, natural-looking results. Book your appointment today!'
-            }
-        };
-        
-        return translations[currentLanguage]?.[key] || defaultValue;
-    };
-
     return (
         <>
             <Head title={t('meta.title', 'Professional Spray Tan Services in Poland')}>
@@ -114,14 +93,7 @@ export default function Welcome() {
             </Head>
 
             <div className="min-h-screen bg-white">
-                {/* Switcher de langue fixe */}
-                <LanguageSwitcher 
-                    currentLanguage={currentLanguage}
-                    onLanguageChange={changeLanguage}
-                    className="fixed top-4 right-4 z-50"
-                />
-
-                {/* Header avec navigation */}
+                {/* Header avec navigation ET bouton langue intégré */}
                 <Header />
 
                 {/* Section Hero */}
@@ -133,20 +105,20 @@ export default function Welcome() {
                 {/* Section À propos (présentation de ta cousine) */}
                 <About />
 
-                {/* Galerie Before & After (transformations) */}
-                <BeforeAfterGallery />
+                {/* Galerie Portfolio (salon, produits, équipements) */}
+                <PortfolioGallery />
 
                 {/* Témoignages clients */}
                 <Testimonials />
 
-                {/* Galerie Portfolio (salon, produits, équipements) */}
-                <PortfolioGallery />
-
-                {/* FAQ (statique) */}
-                <FAQ />
+                {/* Galerie Before & After (transformations) */}
+                <BeforeAfterGallery />
 
                 {/* Call to Action / Contact */}
                 <CTA />
+
+                {/* FAQ (statique) */}
+                <FAQ />
 
                 {/* Footer */}
                 <Footer />

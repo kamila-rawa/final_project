@@ -18,10 +18,10 @@ export default function Hero() {
 
     return (
         <section className="relative isolate overflow-hidden bg-gray-900 pt-14 pb-16 sm:pb-20">
-            {/* Image de fond */}
+            {/* Image de fond - remplacée par votre photo locale */}
             <img
                 alt="Professional spray tan service"
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=2000&auto=format&fit=crop"
+                src="/photos/IMG_5148.jpg"
                 className="absolute inset-0 -z-10 w-full h-full object-cover"
             />
             
@@ -63,7 +63,7 @@ export default function Hero() {
             {/* Effet de dégradé en bas */}
             <div
                 aria-hidden="true"
-                className="absolute inset-x-0 -bottom-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:bottom-[-20rem]"
+                className="absolute inset-x0 -bottom-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:bottom-[-20rem]"
             >
                 <div
                     className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-amber-400 to-orange-500 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
