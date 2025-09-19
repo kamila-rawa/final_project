@@ -42,8 +42,8 @@ export default function Process() {
                             <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
                                 {t('process.title', 'Opalanie Natryskowe')}
                             </h1>
-                            <p className="mt-6 text-xl/8 text-amber-700">
-                                {t('process.description', 'Opalanie natryskowe to bezpieczna i szybka metoda uzyskania pięknej, równomiernej opalenizny bez konieczności wystawiania skóry na szkodliwe promieniowanie UV.')}
+                            <p className="mt-6 text-xl/8 text-gray-700">
+                                {t('process.description', 'Opalanie natryskowe to nowoczesna metoda uzyskania pięknej, złocistej opalenizny w zaledwie kilka minut. Bez słońca, bez szkodliwego UV, za to z gwarancją równomiernego i naturalnego efektu.')}
                             </p>
                         </div>
                     </div>
@@ -59,18 +59,21 @@ export default function Process() {
                     <div className="lg:pr-4">
                         <div className="max-w-xl text-base/7 text-gray-700 lg:max-w-lg">
                             <p>
-                                {t('process.intro', 'Opalanie natryskowe jest szczególnie polecane przed ważnymi wydarzeniami, takimi jak wesela, sesje zdjęciowe czy wakacje, zapewniając zdrowy i promienny wygląd skóry.')}
+                                {t('process.intro', 'To idealne rozwiązanie przed każdą ważną okazją - weselem, sesją zdjęciową, wakacjami czy po prostu gdy chcesz poczuć się pewniej w swojej skórze. Profesjonalne opalanie natryskowe daje Ci kontrolę nad intensywnością koloru i pewność pięknego rezultatu.')}
                             </p>
-                            <ul role="list" className="mt-8 space-y-8 text-gray-600">
+                            <h3 className="mt-8 text-lg font-semibold text-amber-900">
+                                {t('process.benefits_title', 'Dlaczego warto wybrać spray tan?')}
+                            </h3>
+                            <ul role="list" className="mt-6 space-y-8 text-gray-600">
                                 <li className="flex gap-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="mt-1 size-5 flex-none text-amber-600">
                                         <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clipRule="evenodd" />
                                     </svg>
                                     <span>
                                         <strong className="font-semibold text-amber-900">
-                                            {t('process.benefit1.title', 'Szybki efekt.')}
+                                            {t('process.benefit1.title', 'Natychmiastowy efekt.')}
                                         </strong>{' '}
-                                        {t('process.benefit1.description', 'Efekt opalenizny jest widoczny natychmiast po aplikacji i osiąga pełną intensywność w ciągu kilku godzin.')}
+                                        {t('process.benefit1.description', 'Już po zabiegu widzisz różnicę, a pełny, złocisty kolor rozwija się w ciągu kilku godzin.')}
                                     </span>
                                 </li>
                                 <li className="flex gap-x-3">
@@ -79,9 +82,9 @@ export default function Process() {
                                     </svg>
                                     <span>
                                         <strong className="font-semibold text-amber-900">
-                                            {t('process.benefit2.title', 'Bezpieczeństwo dla skóry.')}
+                                            {t('process.benefit2.title', 'Całkowicie bezpieczne.')}
                                         </strong>{' '}
-                                        {t('process.benefit2.description', 'Unikasz szkodliwego promieniowania UV, które może prowadzić do starzenia się skóry i zwiększa ryzyko raka skóry.')}
+                                        {t('process.benefit2.description', 'Żadnego promieniowania UV, które przyspiesza starzenie skóry czy zwiększa ryzyko nowotworów.')}
                                     </span>
                                 </li>
                                 <li className="flex gap-x-3">
@@ -90,21 +93,31 @@ export default function Process() {
                                     </svg>
                                     <span>
                                         <strong className="font-semibold text-amber-900">
-                                            {t('process.benefit3.title', 'Równomierna opalenizna.')}
+                                            {t('process.benefit3.title', 'Profesjonalna precyzja.')}
                                         </strong>{' '}
-                                        {t('process.benefit3.description', 'Profesjonalne opalanie natryskowe zapewnia równomierną aplikację bez smug i plam.')}
+                                        {t('process.benefit3.description', 'Równomierne pokrycie bez smug, plam czy nienaturalnych odcieni - tylko piękna, zdrowo wyglądająca opalenizna.')}
                                     </span>
                                 </li>
                             </ul>
-                            <p className="mt-8">
-                                {t('process.details', 'Podczas zabiegu specjalny preparat z substancją aktywną DHA (dihydroksyaceton) jest równomiernie aplikowany na skórę za pomocą natrysku. Efekt opalenizny pojawia się już po kilku godzinach, a pełna intensywność koloru rozwija się w ciągu 24 godzin. Opalenizna utrzymuje się zwykle od 5 do 10 dni, w zależności od pielęgnacji skóry.')}
+                            <p className="mt-8 text-amber-700">
+                                {t('process.conclusion', 'Efekt utrzymuje się 7-10 dni i stopniowo, naturalnie zanika. Możesz cieszyć się pięknym kolorem skóry przez cały rok, niezależnie od pogody czy pory roku.')}
                             </p>
-                            <h2 className="mt-16 text-2xl font-bold tracking-tight text-amber-900">
-                                {t('process.preparation.title', 'Jak przygotować się do zabiegu?')}
-                            </h2>
-                            <p className="mt-6">
-                                {t('process.preparation.description', 'Przed zabiegiem dokładnie oczyść i złuszcz skórę, unikaj balsamów, olejków, perfum oraz makijażu. W dniu zabiegu załóż luźne, ciemne ubrania. Po aplikacji unikaj kontaktu z wodą przez kilka godzin, aby opalenizna mogła się utrwalić.')}
-                            </p>
+                            
+                            {/* Call to Action */}
+                            <div className="mt-12 text-center">
+                                <h3 className="text-xl font-semibold text-amber-900 mb-4">
+                                    {t('process.cta_title', 'Gotowa na swoją transformację?')}
+                                </h3>
+                                <button
+                                    onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
+                                    className="inline-flex items-center px-6 py-3 text-base font-semibold text-white bg-amber-500 rounded-lg hover:bg-amber-400 transition-colors duration-300 shadow-sm"
+                                >
+                                    {t('process.cta_button', 'Umów się na wizytę')}
+                                    <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
