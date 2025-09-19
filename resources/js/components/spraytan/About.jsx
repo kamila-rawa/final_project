@@ -5,7 +5,7 @@ export default function About() {
     const { t } = useTranslation();
 
     return (
-        <div className="relative z-10 mt-32 bg-gray-100 pb-20 sm:mt-56 sm:pb-24 xl:pb-0">
+        <div id="about" className="relative z-10 py-24 sm:py-32 bg-gray-100 pb-20 sm:pb-24 xl:pb-0">
             {/* Effet de fond avec blur */}
             <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
                 <div className="absolute top-[calc(50%-36rem)] right-[calc(50%-19rem)] transform-gpu blur-3xl">
@@ -22,11 +22,11 @@ export default function About() {
             <div className="mx-auto flex max-w-7xl flex-col items-center gap-x-8 gap-y-10 px-6 sm:gap-y-8 lg:px-8 xl:flex-row xl:items-stretch">
                 {/* Image - à gauche */}
                 <div className="w-full max-w-2xl xl:w-96 xl:flex-none xl:flex xl:items-center">
-                    <div className="relative aspect-[3/4] w-full md:-mx-8 xl:mx-0 max-h-[450px]">
+                    <div className="relative aspect-[3/4] w-full md:-mx-8 xl:mx-0 max-h-[500px] md:max-h-[600px] lg:max-h-[550px] xl:max-h-[450px]">
                         <img
-                            alt={t('about.imageAlt', 'Aneta Januszek - Specjalista Opalania Natryskowego')}
-                            src="https://images.unsplash.com/photo-1594736797933-d0201ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            className="absolute inset-0 size-full rounded-2xl bg-gray-300 object-cover shadow-2xl"
+                            alt={t('about.imageAlt', 'Aneta Januszek - Certyfikowany Specjalista Spray Tan')}
+                            src="/photos/LikeAGold-Aneta-123-2.JPEG"
+                            className="absolute inset-0 size-full rounded-2xl bg-gray-300 object-cover object-center shadow-2xl"
                         />
                         {/* Overlay décoratif léger */}
                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -51,24 +51,60 @@ export default function About() {
 
                         {/* Titre principal */}
                         <h2 className="text-3xl font-bold text-gray-900 mb-8 sm:text-4xl">
-                            {t('about.title', 'About Me')}
+                            {t('about.title', 'O mnie')}
                         </h2>
 
                         {/* Contenu principal */}
                         <div className="space-y-6 mb-8">
                             <p className="text-xl/8 font-semibold text-gray-900 sm:text-2xl/9">
-                                {t('about.description1', 'Opalanie to moja pasja. Dbam o to, aby każda klientka czuła się wyjątkowo i mogła cieszyć się zdrową, naturalną opalenizną.')}
+                                {t('about.description1', 'Jestem Aneta i od lat zajmuję się profesjonalnym opalaniem natryskowym. Moją misją jest pomóc każdej kobiecie poczuć się pewnie i pięknie w swojej skórze.')}
                             </p>
                             <p className="text-lg text-gray-600 leading-relaxed">
-                                {t('about.description2', 'Korzystam wyłącznie z najwyższej jakości kosmetyków firmy Norvell i najnowszych technologii, aby zapewnić Ci doskonały efekt. Twoje zadowolenie jest dla mnie najważniejsze.')}
+                                {t('about.description2', 'Specializuję się w tworzeniu naturalnych, złocistych odcieni, które podkreślają Twoją urodę. Każdy zabieg dostosuję indywidualnie - zarówno pod względem intensywności koloru, jak i Twoich potrzeb.')}
                             </p>
+                            <p className="text-lg text-gray-600 leading-relaxed">
+                                {t('about.description3', 'W swojej pracy używam wyłącznie produktów najwyższej jakości firmy Norvell oraz najnowszych technik aplikacji. To gwarantuje równomierny efekt bez smug i długotrwały rezultat.')}
+                            </p>
+                        </div>
+
+                        {/* Pourquoi me choisir */}
+                        <div className="mb-8">
+                            <h3 className="text-lg font-semibold text-amber-900 mb-4">
+                                {t('about.why_title', 'Dlaczego wybrać mnie?')}
+                            </h3>
+                            <ul className="space-y-2 text-gray-600">
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-amber-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                    {t('about.benefit1', 'Doświadczenie i certyfikowane szkolenia')}
+                                </li>
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-amber-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                    {t('about.benefit2', 'Indywidualne podejście do każdej klientki')}
+                                </li>
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-amber-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                    {t('about.benefit3', 'Naturalne efekty bez pomarańczowego odcienia')}
+                                </li>
+                                <li className="flex items-center">
+                                    <svg className="w-5 h-5 text-amber-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                    {t('about.benefit4', 'Higiena i bezpieczeństwo na najwyższym poziomie')}
+                                </li>
+                            </ul>
                         </div>
 
                         {/* Signature */}
                         <div className="mt-8 text-base">
                             <div className="font-semibold text-gray-900 text-lg">Aneta Januszek</div>
                             <div className="mt-1 text-amber-600 font-medium">
-                                {t('about.role', 'Specjalista Opalania Natryskowego')}
+                                {t('about.role', 'Certyfikowany Specjalista Spray Tan')}
                             </div>
                         </div>
                     </div>
