@@ -105,7 +105,6 @@ export default function PortfolioGallery() {
     
     if (images.length === 0) return null;
 
-    // Opalanie = rectangulaire, autres = carré
     const isOpalanie = category === 'opalanie';
 
     return (
@@ -197,13 +196,6 @@ export default function PortfolioGallery() {
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
           </div>
         </div>
-        <div className="bg-gradient-to-b from-amber-50 to-amber-100 pt-16 pb-16">
-          <div className="container mx-auto px-4 text-center opacity-0">
-            <h3 className="text-2xl font-bold text-amber-900 mb-4">
-              {i18n.language === 'en' ? 'Ready for your transformation?' : 'Gotowa na swoją transformację?'}
-            </h3>
-          </div>
-        </div>
       </section>
     );
   }
@@ -257,11 +249,8 @@ export default function PortfolioGallery() {
           </div>
         </div>
         
-      // Remplacez la section CTA finale (ligne ~258-278) par ce code :
-
         <div className="bg-gradient-to-b from-amber-50 to-amber-100 pt-16 pb-16">
           <div className="container mx-auto px-4">
-            {/* CTA dans le style Testimonials */}
             <div className="text-center max-w-2xl mx-auto">
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-amber-200/50">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">

@@ -7,25 +7,21 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('home');
 
+Route::get('/informacje-prawne', function () {
+    return Inertia::render('LegalNotice');
+})->name('legal.notice');
+
+// Version DEV (sans auth)
+Route::get('dashboard', function () {
+    return Inertia::render('dashboard');
+})->name('dashboard');
+
+// Version PRODUCTION (avec auth)
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 });
-
-
-Route::get('/playground', function () {
-    return Inertia::render('Playground', [
-        'auth' => [
-            'user' => [
-                'name' => 'Ada Lovelace',
-                'avatar' => 'https://i.pravatar.cc/100',
-            ],
-        ],
-    ]);
-});
-
-
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

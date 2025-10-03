@@ -5,7 +5,6 @@ export default function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   
-  // Coordonnées statiques
   const contactInfo = {
     phone: '+48 790 414 940',
     address: 'Perłowa 5, 75-016 Skwierzynka, Pologne',
@@ -78,7 +77,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><a href="#process" className="text-gray-300 hover:text-amber-400 transition-colors text-sm">{t('nav.tanning')}</a></li>
               <li><a href="#about" className="text-gray-300 hover:text-amber-400 transition-colors text-sm">{t('nav.about')}</a></li>
-              <li><a href="#gallery" className="text-gray-300 hover:text-amber-400 transition-colors text-sm">{t('nav.gallery')}</a></li>
+              <li><a href="#portfolio-gallery" className="text-gray-300 hover:text-amber-400 transition-colors text-sm">{t('nav.gallery')}</a></li>
               <li><a href="#testimonials" className="text-gray-300 hover:text-amber-400 transition-colors text-sm">{t('nav.testimonials')}</a></li>
               <li><a href="#cta" className="text-gray-300 hover:text-amber-400 transition-colors text-sm">{t('nav.contact')}</a></li>
               <li><a href="#faq" className="text-gray-300 hover:text-amber-400 transition-colors text-sm">{t('nav.faq')}</a></li>
@@ -146,8 +145,9 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
             <p>© {currentYear} Like a Gold. {t('footer.all_rights_reserved')} {t('footer.developed_by')} KR Dev.</p>
             <div className="flex space-x-4 mt-2 md:mt-0">
-              <a href="/mentions-legales" className="hover:text-amber-400 transition-colors">{t('footer.legal_notice')}</a>
-              <a href="/rgpd" className="hover:text-amber-400 transition-colors">{t('footer.gdpr')}</a>
+              <a href="/informacje-prawne" className="hover:text-amber-400 transition-colors">
+                {t('footer.legal_notice')}
+              </a>
             </div>
           </div>
         </div>
