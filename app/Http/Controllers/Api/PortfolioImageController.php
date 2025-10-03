@@ -14,26 +14,25 @@ class PortfolioImageController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $language = $request->get('lang', 'pl');
         $category = $request->get('category');
 
         $query = PortfolioImage::active()->ordered();
 
-        // Pour "wszystkie", on utilise un ordre aléatoire
+        // Pour "all", on utilise un ordre aléatoire
         if ($category === 'all' || ! $category) {
             $query->randomOrder();
         } elseif ($category && $category !== 'all') {
             $query->byCategory($category);
         }
 
-        $images = $query->get()->map(function ($image) use ($language) {
+        $images = $query->get()->map(function ($image) {
             return [
                 'id' => $image->id,
-                'title' => $image->getTranslatedTitle($language),
-                'description' => $image->getTranslatedDescription($language),
+                'title' => $image->title,
+                'description' => $image->description,
                 'image' => $image->image_url,
                 'category' => $image->category,
-                'alt_text' => $image->getTranslatedAltText($language),
+                'alt_text' => $image->alt_text,
                 'created_at' => $image->created_at,
             ];
         });
@@ -62,14 +61,11 @@ class PortfolioImageController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'title_pl' => 'required|string|max:255',
-            'title_en' => 'required|string|max:255',
-            'description_pl' => 'nullable|string',
-            'description_en' => 'nullable|string',
+            'title' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
             'image' => 'required|string',
-            'category' => 'required|in:opalanie,kosmetyki,certyfikaty,smsy,inne',
-            'alt_text_pl' => 'nullable|string|max:255',
-            'alt_text_en' => 'nullable|string|max:255',
+            'category' => 'required|in:opalanie,kosmetyki,smsy',
+            'alt_text' => 'nullable|string|max:255',
             'display_order' => 'integer',
             'is_active' => 'boolean',
         ]);
@@ -88,17 +84,15 @@ class PortfolioImageController extends Controller
      */
     public function show(Request $request, PortfolioImage $portfolioImage): JsonResponse
     {
-        $language = $request->get('lang', 'pl');
-
         return response()->json([
             'success' => true,
             'data' => [
                 'id' => $portfolioImage->id,
-                'title' => $portfolioImage->getTranslatedTitle($language),
-                'description' => $portfolioImage->getTranslatedDescription($language),
+                'title' => $portfolioImage->title,
+                'description' => $portfolioImage->description,
                 'image' => $portfolioImage->image_url,
                 'category' => $portfolioImage->category,
-                'alt_text' => $portfolioImage->getTranslatedAltText($language),
+                'alt_text' => $portfolioImage->alt_text,
             ],
         ]);
     }
@@ -109,14 +103,11 @@ class PortfolioImageController extends Controller
     public function update(Request $request, PortfolioImage $portfolioImage): JsonResponse
     {
         $validated = $request->validate([
-            'title_pl' => 'string|max:255',
-            'title_en' => 'string|max:255',
-            'description_pl' => 'nullable|string',
-            'description_en' => 'nullable|string',
+            'title' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
             'image' => 'string',
-            'category' => 'in:opalanie,kosmetyki,certyfikaty,smsy,inne',
-            'alt_text_pl' => 'nullable|string|max:255',
-            'alt_text_en' => 'nullable|string|max:255',
+            'category' => 'in:opalanie,kosmetyki,smsy',
+            'alt_text' => 'nullable|string|max:255',
             'display_order' => 'integer',
             'is_active' => 'boolean',
         ]);

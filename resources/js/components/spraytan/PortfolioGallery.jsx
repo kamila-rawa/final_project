@@ -245,7 +245,7 @@ export default function PortfolioGallery() {
 
             <CategorySection 
               category="kosmetyki" 
-              title={i18n.language === 'en' ? 'Cosmetics' : 'Kosmetyki'}
+              title={i18n.language === 'en' ? 'Cosmetics & Certificates' : 'Kosmetyki & Certyfikaty'}
               index={1}
             />
 

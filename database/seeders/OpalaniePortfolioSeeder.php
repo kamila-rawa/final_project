@@ -10,12 +10,12 @@ class OpalaniePortfolioSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->command->info('🔄 Ajout des images Opalanie au portfolio...');
+        $this->command->info('Ajout des images Opalanie au portfolio...');
 
         $opalaniePath = public_path('photos/portfolio/opalanie');
 
         if (! File::exists($opalaniePath)) {
-            $this->command->error("❌ Le dossier {$opalaniePath} n'existe pas!");
+            $this->command->error("Le dossier {$opalaniePath} n'existe pas!");
 
             return;
         }
@@ -29,14 +29,14 @@ class OpalaniePortfolioSeeder extends Seeder
         });
 
         if (empty($imageFiles)) {
-            $this->command->warn('⚠️  Aucune image trouvée dans le dossier Opalanie');
+            $this->command->warn('Aucune image trouvée dans le dossier Opalanie');
 
             return;
         }
 
         $deletedCount = PortfolioImage::where('category', 'opalanie')->delete();
         if ($deletedCount > 0) {
-            $this->command->info("🗑️  {$deletedCount} anciennes images Opalanie supprimées");
+            $this->command->info("{$deletedCount} anciennes images Opalanie supprimées");
         }
 
         $displayOrder = 1;
@@ -49,12 +49,9 @@ class OpalaniePortfolioSeeder extends Seeder
                 PortfolioImage::create([
                     'category' => 'opalanie',
                     'image' => $filename,
-                    'title_pl' => 'Profesjonalny Spray Tan '.$displayOrder,
-                    'title_en' => 'Professional Spray Tan '.$displayOrder,
-                    'alt_text_pl' => 'Profesjonalne opalanie natryskowe - efekt '.$displayOrder,
-                    'alt_text_en' => 'Professional spray tan - result '.$displayOrder,
-                    'description_pl' => 'Naturalny efekt opalenizny dla perfekcyjnego wyglądu',
-                    'description_en' => 'Natural tanning effect for a perfect look',
+                    'title' => null,
+                    'description' => null,
+                    'alt_text' => 'Profesjonalne opalanie natryskowe - efekt '.$displayOrder,
                     'display_order' => $displayOrder,
                     'is_active' => true,
                 ]);
@@ -63,12 +60,10 @@ class OpalaniePortfolioSeeder extends Seeder
                 $displayOrder++;
 
             } catch (\Exception $e) {
-                $this->command->error("❌ Erreur lors de l'ajout de {$filename}: ".$e->getMessage());
+                $this->command->error("Erreur lors de l'ajout de {$filename}: ".$e->getMessage());
             }
         }
 
-        $this->command->info("✅ {$addedCount} images Opalanie ajoutées avec succès!");
-        $this->command->info('📁 Catégorie: opalanie');
-        $this->command->info('🖼️  Images disponibles sur le site');
+        $this->command->info("{$addedCount} images Opalanie ajoutées avec succès!");
     }
 }

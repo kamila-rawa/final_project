@@ -7,14 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class PortfolioImage extends Model
 {
     protected $fillable = [
-        'title_pl',
-        'title_en',
-        'description_pl',
-        'description_en',
+        'title',
+        'description',
         'image',
         'category',
-        'alt_text_pl',
-        'alt_text_en',
+        'alt_text',
         'display_order',
         'is_active',
     ];
@@ -42,7 +39,7 @@ class PortfolioImage extends Model
         return $query->orderBy('display_order')->orderBy('created_at', 'desc');
     }
 
-    // Scope pour mélange aléatoire (pour affichage "wszystkie")
+    // Scope pour mélange aléatoire
     public function scopeRandomOrder($query)
     {
         return $query->inRandomOrder();
@@ -51,7 +48,6 @@ class PortfolioImage extends Model
     // Accessor pour l'URL de l'image
     public function getImageUrlAttribute()
     {
-        // Structure: public/photos/portfolio/{category}/{image}
         if ($this->image) {
             // Si c'est déjà un chemin complet, le retourner tel quel
             if (str_starts_with($this->image, '/photos/') || str_starts_with($this->image, 'http')) {
@@ -65,31 +61,13 @@ class PortfolioImage extends Model
         return null;
     }
 
-    // Méthodes pour récupérer le contenu traduit
-    public function getTranslatedTitle(string $language = 'pl')
-    {
-        return $language === 'en' ? $this->title_en : $this->title_pl;
-    }
-
-    public function getTranslatedDescription(string $language = 'pl')
-    {
-        return $language === 'en' ? $this->description_en : $this->description_pl;
-    }
-
-    public function getTranslatedAltText(string $language = 'pl')
-    {
-        return $language === 'en' ? $this->alt_text_en : $this->alt_text_pl;
-    }
-
-    // Obtenir les nouvelles catégories disponibles
+    // Obtenir les catégories disponibles
     public static function getCategories(): array
     {
         return [
             'opalanie' => 'Opalanie',
             'kosmetyki' => 'Kosmetyki',
-            'certyfikaty' => 'Certyfikaty',
             'smsy' => 'SMSy od klientek',
-            'inne' => 'Inne',
         ];
     }
 

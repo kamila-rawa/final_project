@@ -9,7 +9,7 @@ class PortfolioImagesSeeder extends Seeder
 {
     public function run(): void
     {
-        // Images de la catégorie "opalanie" - Spray tan avec les bonnes extensions
+        // Images de la catégorie "opalanie" - Spray tan
         $opalanieImages = [
             // Première série
             ['image' => 'D25AAC68-2804-471B-BFC7-B527FFE1EA5.jpg', 'display_order' => 1],
@@ -48,14 +48,11 @@ class PortfolioImagesSeeder extends Seeder
 
         foreach ($opalanieImages as $imageData) {
             PortfolioImage::create([
-                'title_pl' => 'Profesjonalny Spray Tan',
-                'title_en' => 'Professional Spray Tan',
-                'description_pl' => 'Naturalny efekt opalenizny dla perfekcyjnego wyglądu',
-                'description_en' => 'Natural tanning effect for a perfect look',
-                'image' => $imageData['image'], // Tylko nazwa pliku z właściwą ekstensją
+                'title' => null, // Optionnel
+                'description' => null, // Optionnel
+                'image' => $imageData['image'],
                 'category' => 'opalanie',
-                'alt_text_pl' => 'Profesjonalne opalanie natryskowe - efekt '.$imageData['display_order'],
-                'alt_text_en' => 'Professional spray tan - result '.$imageData['display_order'],
+                'alt_text' => 'Profesjonalne opalanie natryskowe - efekt '.$imageData['display_order'],
                 'display_order' => $imageData['display_order'],
                 'is_active' => true,
             ]);
@@ -64,13 +61,10 @@ class PortfolioImagesSeeder extends Seeder
         // Catégorie "kosmetyki" - quelques exemples (à adapter si vous avez des images)
         $kosmetykiImages = [
             [
-                'title_pl' => 'Produkty Norvell',
-                'title_en' => 'Norvell Products',
-                'description_pl' => 'Wysokiej jakości kosmetyki do spray tan',
-                'description_en' => 'High quality spray tan cosmetics',
+                'title' => 'Produkty Norvell',
+                'description' => 'Wysokiej jakości kosmetyki do spray tan',
                 'image' => 'norvell-products-1.jpg',
-                'alt_text_pl' => 'Kosmetyki Norvell do opalania',
-                'alt_text_en' => 'Norvell tanning cosmetics',
+                'alt_text' => 'Kosmetyki Norvell do opalania',
                 'display_order' => 1,
             ],
         ];
@@ -79,45 +73,36 @@ class PortfolioImagesSeeder extends Seeder
             // Vérifier si le fichier existe avant de créer l'entrée
             if (file_exists(public_path("photos/portfolio/kosmetyki/{$imageData['image']}"))) {
                 PortfolioImage::create([
-                    'title_pl' => $imageData['title_pl'],
-                    'title_en' => $imageData['title_en'],
-                    'description_pl' => $imageData['description_pl'],
-                    'description_en' => $imageData['description_en'],
+                    'title' => $imageData['title'],
+                    'description' => $imageData['description'],
                     'image' => $imageData['image'],
                     'category' => 'kosmetyki',
-                    'alt_text_pl' => $imageData['alt_text_pl'],
-                    'alt_text_en' => $imageData['alt_text_en'],
+                    'alt_text' => $imageData['alt_text'],
                     'display_order' => $imageData['display_order'],
                     'is_active' => true,
                 ]);
             }
         }
 
-        // Catégorie "certyfikaty" - exemple (à adapter si vous avez des images)
-        $certyfikatyImages = [
+        // Catégorie "smsy" - messages de clientes (à adapter si vous avez des images)
+        $smsyImages = [
             [
-                'title_pl' => 'Certyfikat Spray Tan',
-                'title_en' => 'Spray Tan Certificate',
-                'description_pl' => 'Certyfikat ukończenia kursu spray tan',
-                'description_en' => 'Spray tan course completion certificate',
-                'image' => 'certificate-spray-tan.jpg',
-                'alt_text_pl' => 'Certyfikat specjalisty spray tan',
-                'alt_text_en' => 'Spray tan specialist certificate',
+                'title' => null,
+                'description' => null,
+                'image' => 'client-message-1.jpg',
+                'alt_text' => 'Wiadomość od zadowolonej klientki',
                 'display_order' => 1,
             ],
         ];
 
-        foreach ($certyfikatyImages as $imageData) {
-            if (file_exists(public_path("photos/portfolio/certyfikaty/{$imageData['image']}"))) {
+        foreach ($smsyImages as $imageData) {
+            if (file_exists(public_path("photos/portfolio/smsy/{$imageData['image']}"))) {
                 PortfolioImage::create([
-                    'title_pl' => $imageData['title_pl'],
-                    'title_en' => $imageData['title_en'],
-                    'description_pl' => $imageData['description_pl'],
-                    'description_en' => $imageData['description_en'],
+                    'title' => $imageData['title'],
+                    'description' => $imageData['description'],
                     'image' => $imageData['image'],
-                    'category' => 'certyfikaty',
-                    'alt_text_pl' => $imageData['alt_text_pl'],
-                    'alt_text_en' => $imageData['alt_text_en'],
+                    'category' => 'smsy',
+                    'alt_text' => $imageData['alt_text'],
                     'display_order' => $imageData['display_order'],
                     'is_active' => true,
                 ]);
