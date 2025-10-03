@@ -5,7 +5,7 @@ export default function Hero() {
     const { t } = useTranslation();
     
     const scrollToContact = () => {
-        document.getElementById('contact')?.scrollIntoView({ 
+        document.getElementById('cta')?.scrollIntoView({ 
             behavior: 'smooth' 
         });
     };
@@ -36,11 +36,10 @@ export default function Hero() {
                     <p className="mt-8 text-lg font-medium text-amber-200 sm:text-xl">
                         {t('hero.subtitle', 'Profesjonalne opalanie natryskowe')}
                     </p>
-                    <p className="mt-6 text-base text-gray-300 sm:text-lg max-w-xl mx-auto">
-<div className="mt-6 text-base text-gray-300 sm:text-lg max-w-xl mx-auto space-y-2">
-    <p>{t('hero.description', 'Uzyskaj idealną złotą opaleniznę.')}</p>
-    <p>{t('hero.description_2', 'Bezpieczne, naturalne i długotrwałe efekty gwarantowane.')}</p>
-</div>                    </p>
+                    <div className="mt-6 text-base text-gray-300 sm:text-lg max-w-xl mx-auto space-y-2">
+                        <p>{t('hero.description', 'Poczuj się pewnie w swojej skórze')}</p>
+                        <p>{t('hero.description_2', 'Naturalna, złocista opalenizna przez cały rok')}</p>
+                    </div>
                     
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <button
@@ -63,7 +62,7 @@ export default function Hero() {
             {/* Effet de dégradé en bas */}
             <div
                 aria-hidden="true"
-                className="absolute inset-x0 -bottom-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:bottom-[-20rem]"
+                className="absolute inset-x-0 -bottom-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:bottom-[-20rem]"
             >
                 <div
                     className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-amber-400 to-orange-500 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"

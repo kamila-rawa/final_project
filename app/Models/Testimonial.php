@@ -17,7 +17,7 @@ class Testimonial extends Model
         'content_pl',
         'content_en',
         'rating',
-        'is_active'
+        'is_active',
     ];
 
     /**

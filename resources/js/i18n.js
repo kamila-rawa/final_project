@@ -8,8 +8,8 @@ const resources = {
       // Hero Section
       "hero.title": "Like a Gold",
       "hero.subtitle": "Profesjonalne opalanie natryskowe",
-      "hero.description": "Uzyskaj idealną złotą opaleniznę.",
-      "hero.description_2": "Bezpieczne, naturalne i długotrwałe efekty gwarantowane.",
+      "hero.description": "Poczuj się pewnie w swojej skórze",
+      "hero.description_2": "Naturalna, złocista opalenizna przez cały rok",
       "hero.cta_primary": "Zarezerwuj Wizytę",
       "hero.cta_secondary": "Dowiedz się więcej",
 
@@ -22,9 +22,9 @@ const resources = {
       "nav.gallery": "Galeria",
       "nav.portfolio": "Portfolio",
       "nav.contact": "Kontakt",
-      "nav.faq": "FAQ",
+      "nav.faq": "Pytania",
       
-      // Process Section - NOUVELLES TRADUCTIONS
+      // Process Section
       "process.subtitle": "Szybki Sposób na Zdrową Opaleniznę",
       "process.title": "Opalanie Natryskowe",
       "process.description": "Opalanie natryskowe to nowoczesna metoda uzyskania pięknej, złocistej opalenizny w zaledwie kilka minut. Bez słońca, bez szkodliwego UV, za to z gwarancją równomiernego i naturalnego efektu.",
@@ -33,7 +33,7 @@ const resources = {
       "process.benefit1.title": "Natychmiastowy efekt.",
       "process.benefit1.description": "Już po zabiegu widzisz różnicę, a pełny, złocisty kolor rozwija się w ciągu kilku godzin.",
       "process.benefit2.title": "Całkowicie bezpieczne.",
-      "process.benefit2.description": "Żadnego promieniowania UV, które przyspiesza starzenie skóry czy zwiększa ryzyko nowotworów.",
+      "process.benefit2.description": "Żadnego promieniowania UV, które przyspiesza starzenie skóry czy zwiększa ryzyko nowotorów.",
       "process.benefit3.title": "Profesjonalna precyzja.",
       "process.benefit3.description": "Równomierne pokrycie bez smug, plam czy nienaturalnych odcieni - tylko piękna, zdrowo wyglądająca opalenizna.",
       "process.conclusion": "Efekt utrzymuje się 7-10 dni i stopniowo, naturalnie zanika. Możesz cieszyć się pięknym kolorem skóry przez cały rok, niezależnie od pogody czy pory roku.",
@@ -44,7 +44,7 @@ const resources = {
       "about.title": "O mnie",
       "about.imageAlt": "Aneta Januszek - Certyfikowany Specjalista Spray Tan",
       "about.description1": "Jestem Aneta i od lat zajmuję się profesjonalnym opalaniem natryskowym. Moją misją jest pomóc każdej kobiecie poczuć się pewnie i pięknie w swojej skórze.",
-      "about.description2": "Specializuję się w tworzeniu naturalnych, złocistych odcieni, które podkreślają Twoją urodę. Każdy zabieg dostosuję indywidualnie - zarówno pod względem intensywności koloru, jak i Twoich potrzeb.",
+      "about.description2": "Specjalizuję się w tworzeniu naturalnych, złocistych odcieni, które podkreślają Twoją urodę. Każdy zabieg dostosowuję indywidualnie - zarówno pod względem intensywności koloru, jak i Twoich potrzeb.",
       "about.description3": "W swojej pracy używam wyłącznie produktów najwyższej jakości firmy Norvell oraz najnowszych technik aplikacji. To gwarantuje równomierny efekt bez smug i długotrwały rezultat.",
       "about.why_title": "Dlaczego wybrać mnie?",
       "about.benefit1": "Doświadczenie i certyfikowane szkolenia",
@@ -58,26 +58,61 @@ const resources = {
       "cta.title": "Poczuj się pięknie w swojej skórze",
       "cta.description": "Zarezerwuj swoją sesję profesjonalnego spray tan już dziś. Doświadcz naturalnej, złocistej opalenizny, która podkreśli Twoją urodę i doda pewności siebie.",
       "cta.appointment_text": "Wizyty po wcześniejszym umówieniu",
+      "cta.appointment_on_demand": "Wizyty po telefonicznym umówieniu",
       "cta.call_button": "Zadzwoń teraz",
       "cta.whatsapp_button": "WhatsApp",
       "cta.trust_note": "Bezpłatna konsultacja • Produkty Norvell • Efekt natychmiastowy",
       "cta.image_alt": "Aneta Januszek - Profesjonalna transformacja spray tan",
       "cta.floating_text": "Efekt natychmiastowy",
       "cta.floating_subtext": "7-10 dni trwałości",
-      
-      // CTA Section
-      "cta.appointment_on_demand": "Wizyty po telefonicznym umówieniu",
+      "cta.call": "Zadzwoń",
+      "cta.sms": "SMS",
+      "cta.email": "Email",
+      "cta.whatsapp": "WhatsApp",
+      "cta.instant": "Szybko",
+      "cta.hours": "Godziny otwarcia",
+      "cta.address": "Adres",
+      "cta.response_time": "Czas odpowiedzi",
+      "cta.response_time_default": "Do 24h",
+      "cta.follow_us": "Śledź nas w mediach społecznościowych",
+      "cta.sms_message": "Cześć, chciałbym umówić się na spray tan.",
+      "cta.email_subject": "Prośba o wizytę spray tan",
+      "cta.email_body": "Cześć,\n\nChciałbym umówić się na spray tan.\n\nPozdrawiam",
+      "cta.whatsapp_message": "Cześć, chciałbym umówić się na spray tan.",
+      "cta.error": "Błąd przy ładowaniu informacji kontaktowych",
       
       // Métadonnées
       "meta.title": "Profesjonalne Usługi Spray Tan w Polsce - Like a Gold",
       "meta.description": "Uzyskaj idealną opaleniznę dzięki profesjonalnym usługom spray tan. Bezpieczne, naturalnie wyglądające rezultaty. Zarezerwuj wizytę już dziś!",
 
       // Témoignages
-      "testimonials.title": "Opinie klientów",
-      "testimonials.subtitle": "Poznaj opinie naszych zadowolonych klientów",
-      "testimonials.cta": "Dołącz do naszych zadowolonych klientów!",
-      "testimonials.book_now": "Zarezerwuj teraz",
-      "testimonials.error": "Błąd przy ładowaniu opinii",
+     "testimonials.title": "Opinie klientów",
+"testimonials.subtitle": "Poznaj opinie naszych zadowolonych klientów",
+"testimonials.cta": "Dołącz do naszych zadowolonych klientów!",
+"testimonials.book_now": "Zarezerwuj teraz",
+"testimonials.error": "Błąd przy ładowaniu opinii",
+
+"testimonials.client1.name": "Beata R.",
+"testimonials.client1.message": "Profesjonalna obsługa, piękny efekt i świetna atmosfera. Aneta dokładnie wyjaśniła cały proces i dopasowała kolor idealnie do mojej skóry. Efekt utrzymał się ponad tydzień! Polecam z całego serca.",
+
+"testimonials.client2.name": "Agnieszka T.",
+"testimonials.client2.message": "Świetny efekt i bardzo miła atmosfera. Aneta jest profesjonalistką, dokładnie wszystko wyjaśnia. Polecam!",
+
+"testimonials.client3.name": "Joanna M.",
+"testimonials.client3.message": "Rewelacyjna opalenizna! Naturalny kolor, równomierne pokrycie. Aneta wie co robi, czuć doświadczenie.",
+
+"testimonials.client4.name": "Maria S.",
+"testimonials.client4.message": "Idealna opalenizna przed weselem! Dokładnie taki efekt jakiego oczekiwałam. Dziękuję!",
+
+"testimonials.client5.name": "Magdalena W.",
+"testimonials.client5.message": "Profesjonalizm na najwyższym poziomie. Piękna, naturalna opalenizna bez smug. Wrócę na pewno!",
+
+"testimonials.client6.name": "Katarzyna L.",
+"testimonials.client6.message": "Bardzo dobra jakość usługi. Opalenizna równomierna i naturalna. Polecam każdemu!",
+
+"testimonials.client7.name": "Anna K.",
+"testimonials.client7.message": "Super efekt! Aneta jest bardzo miła i profesjonalna. Najlepsza opalenizna jaką miałam!",
+
       
       // Galerie avant/après
       "gallery.title": "Galeria Przed/Po",
@@ -114,25 +149,6 @@ const resources = {
       "portfolio.modal_hint": "Naciśnij ESC aby zamknąć",
       "portfolio.error": "Błąd przy ładowaniu portfolio",
       
-      // CTA/Contact
-      "cta.title": "Gotowa na swoją transformację?",
-      "cta.subtitle": "Skontaktuj się z nami już teraz, aby zarezerwować swoją sesję profesjonalnego spray tan",
-      "cta.call": "Zadzwoń",
-      "cta.sms": "SMS",
-      "cta.email": "Email",
-      "cta.whatsapp": "WhatsApp",
-      "cta.instant": "Szybko",
-      "cta.hours": "Godziny otwarcia",
-      "cta.address": "Adres",
-      "cta.response_time": "Czas odpowiedzi",
-      "cta.response_time_default": "Do 24h",
-      "cta.follow_us": "Śledź nas w mediach społecznościowych",
-      "cta.sms_message": "Cześć, chciałbym umówić się na spray tan.",
-      "cta.email_subject": "Prośba o wizytę spray tan",
-      "cta.email_body": "Cześć,\n\nChciałbym umówić się na spray tan.\n\nPozdrawiam",
-      "cta.whatsapp_message": "Cześć, chciałbym umówić się na spray tan.",
-      "cta.error": "Błąd przy ładowaniu informacji kontaktowych",
-      
       // FAQ Section
       "faq.badge": "Często zadawane pytania",
       "faq.title": "Wszystko co musisz wiedzieć",
@@ -148,7 +164,7 @@ const resources = {
       "faq.a2": "Opalenizna spray tan utrzymuje się 7-10 dni przy odpowiedniej pielęgnacji. Efekt jest najbardziej intensywny przez pierwsze 3-4 dni, następnie stopniowo i naturalnie blaknie. Trwałość zależy od typu skóry, pielęgnacji i aktywności fizycznej. Skóra sucha zatrzymuje opaleniznę dłużej niż tłusta.",
       
       "faq.q3": "Czy opalanie natryskowe jest bezpieczne?",
-      "faq.a3": "Tak, spray tan jest całkowicie bezpieczny. Używamy DHA (dihydroksyacetonu) - naturalnego składnika zatwierdzonego przez FDA, który reaguje tylko z powierzchniową warstwą skóry. W przeciwieństwie do opalania na słońcu czy w solarium, nie ma ryzyka nowotworów skóry, przedwczesnego starzenia czy poparzenia.",
+      "faq.a3": "Tak, spray tan jest całkowicie bezpieczny. Używamy DHA (dihydroksyacetonu) - naturalnego składnika zatwierdzonego przez FDA, który reaguje tylko z powierzchniową warstwą skóry. W przeciwieństwie do opalania na słońcu czy w solarium, nie ma ryzyka nowotorów skóry, przedwczesnego starzenia czy poparzenia.",
       
       "faq.q4": "Kiedy mogę się wykąpać po zabiegu?",
       "faq.a4": "Pierwszy prysznic po minimum 8-12 godzinach (najlepiej następnego ranka). Używaj letniej wody i delikatnego żelu bez olejków. Nie pocieraj skóry - tylko delikatnie osusz ręcznikiem. Po kąpieli natychmiast nawilż skórę balsamem bez olejków. Unikaj długich, gorących kąpieli, sauny i jacuzzi przez pierwsze 24-48 godzin.",
@@ -172,24 +188,13 @@ const resources = {
       "faq.a10": "Nierówności można skorygować w ciągu 24-48 godzin. Ciemniejsze miejsca delikatnie złuszcz mieszanką cukru i oliwy. Jasne miejsca można dotknąć samoopalaczem. Jeśli problem utrzymuje się, skontaktuj się ze mną - poprawa w ramach usługi.",
 
       // Footer
-      "footer.business_name": "Spray Tan Polska",
-      "footer.description": "Twój specjalista od profesjonalnego spray tan w Polsce. Naturalne i trwałe efekty dla idealnej opalenizny przez cały rok.",
+      "footer.description": "Twoja specjalistka od profesjonalnego spray tan koło Koszalina. Naturalne i trwałe efekty dla idealnej opalenizny przez cały rok. Profesjonalne produkty Norvell i indywidualne podejście do każdej klientki.",
       "footer.quick_links": "Szybka nawigacja",
-      "footer.about": "O nas",
-      "footer.testimonials": "Opinie",
-      "footer.gallery": "Galeria",
-      "footer.portfolio": "Portfolio",
-      "footer.contact": "Kontakt",
-      "footer.services": "Nasze usługi",
-      "footer.service_1": "Klasyczny Spray Tan",
-      "footer.service_2": "Express Spray Tan",
-      "footer.service_3": "Przygotowanie skóry",
-      "footer.service_4": "Porady personalizowane",
+      "footer.call": "Zadzwoń",
       "footer.contact_info": "Kontakt",
-      "footer.follow_us": "Śledź nas",
-      "footer.all_rights_reserved": "Wszystkie prawa zastrzeżone",
+      "footer.follow_us": "Znajdź mnie tutaj",
+      "footer.all_rights_reserved": "Wszystkie prawa zastrzeżone.",
       "footer.legal_notice": "Informacje prawne",
-      "footer.privacy_policy": "Polityka prywatności",
       "footer.gdpr": "RODO",
       "footer.developed_by": "Opracowane przez",
       "footer.back_to_top": "Wróć na górę"
@@ -200,8 +205,8 @@ const resources = {
       // Hero Section
       "hero.title": "Like a Gold",
       "hero.subtitle": "Professional spray tanning",
-      "hero.description": "Get the perfect golden tan.",
-      "hero.description_2": "Safe, natural and long-lasting effects guaranteed.",
+      "hero.description": "Feel confident in your skin",
+      "hero.description_2": "Natural, golden tan all year round",
       "hero.cta_primary": "Book Appointment",
       "hero.cta_secondary": "Learn more",
 
@@ -216,7 +221,7 @@ const resources = {
       "nav.contact": "Contact",
       "nav.faq": "FAQ",
       
-      // Process Section - NOUVELLES TRADUCTIONS
+      // Process Section
       "process.subtitle": "Quick Way to Healthy Tan",
       "process.title": "Spray Tanning",
       "process.description": "Spray tanning is a modern method to achieve beautiful, golden tan in just a few minutes. No sun, no harmful UV, but with guarantee of even and natural effect.",
@@ -250,15 +255,28 @@ const resources = {
       "cta.title": "Feel beautiful in your skin",
       "cta.description": "Book your professional spray tan session today. Experience natural, golden tan that enhances your beauty and boosts your confidence.",
       "cta.appointment_text": "Appointments by prior arrangement",
+      "cta.appointment_on_demand": "Appointments by phone arrangement",
       "cta.call_button": "Call now",
       "cta.whatsapp_button": "WhatsApp",
       "cta.trust_note": "Free consultation • Norvell products • Instant effect",
       "cta.image_alt": "Aneta Januszek - Professional spray tan transformation",
       "cta.floating_text": "Instant effect",
       "cta.floating_subtext": "7-10 days lasting",
-      
-      // CTA Section
-      "cta.appointment_on_demand": "Appointments by phone arrangement",
+      "cta.call": "Call",
+      "cta.sms": "SMS",
+      "cta.email": "Email",
+      "cta.whatsapp": "WhatsApp",
+      "cta.instant": "Quick",
+      "cta.hours": "Opening hours",
+      "cta.address": "Address",
+      "cta.response_time": "Response time",
+      "cta.response_time_default": "Within 24h",
+      "cta.follow_us": "Follow us on social media",
+      "cta.sms_message": "Hello, I would like to book a spray tan appointment.",
+      "cta.email_subject": "Spray tan appointment request",
+      "cta.email_body": "Hello,\n\nI would like to book a spray tan appointment.\n\nBest regards",
+      "cta.whatsapp_message": "Hello, I would like to book a spray tan appointment.",
+      "cta.error": "Error loading contact information",
       
       // Métadonnées
       "meta.title": "Professional Spray Tan Services in Poland - Like a Gold",
@@ -270,7 +288,27 @@ const resources = {
       "testimonials.cta": "Join our satisfied clients!",
       "testimonials.book_now": "Book now",
       "testimonials.error": "Error loading testimonials",
-      
+
+     "testimonials.client1.name": "Beata R.",
+"testimonials.client1.message": "Professional service, beautiful effect and great atmosphere. Aneta explained the whole process thoroughly and matched the color perfectly to my skin. The effect lasted over a week! I highly recommend.",
+
+"testimonials.client2.name": "Agnieszka T.",
+"testimonials.client2.message": "Great effect and very nice atmosphere. Aneta is a professional, explains everything thoroughly. I recommend!",
+
+"testimonials.client3.name": "Joanna M.",
+"testimonials.client3.message": "Amazing tan! Natural color, even coverage. Aneta knows what she's doing, you can feel the experience.",
+
+"testimonials.client4.name": "Maria S.",
+"testimonials.client4.message": "Perfect tan before the wedding! Exactly the effect I was expecting. Thank you!",
+
+"testimonials.client5.name": "Magdalena W.",
+"testimonials.client5.message": "Professionalism at the highest level. Beautiful, natural tan without streaks. I will definitely come back!",
+
+"testimonials.client6.name": "Katarzyna L.",
+"testimonials.client6.message": "Very good quality of service. Even and natural tan. I recommend to everyone!",
+
+"testimonials.client7.name": "Anna K.",
+"testimonials.client7.message": "Amazing effect! Aneta is very nice and professional. The best tan I've ever had!",
       // Before/After Gallery
       "gallery.title": "Before/After Gallery",
       "gallery.subtitle": "Discover the transformations achieved by our professional spray tan",
@@ -306,44 +344,52 @@ const resources = {
       "portfolio.modal_hint": "Press ESC to close",
       "portfolio.error": "Error loading portfolio",
       
-      // CTA/Contact
-      "cta.title": "Ready for your transformation?",
-      "cta.subtitle": "Contact us now to book your professional spray tan session",
-      "cta.call": "Call",
-      "cta.sms": "SMS",
-      "cta.email": "Email",
-      "cta.whatsapp": "WhatsApp",
-      "cta.instant": "Quick",
-      "cta.hours": "Opening hours",
-      "cta.address": "Address",
-      "cta.response_time": "Response time",
-      "cta.response_time_default": "Within 24h",
-      "cta.follow_us": "Follow us on social media",
-      "cta.sms_message": "Hello, I would like to book a spray tan appointment.",
-      "cta.email_subject": "Spray tan appointment request",
-      "cta.email_body": "Hello,\n\nI would like to book a spray tan appointment.\n\nBest regards",
-      "cta.whatsapp_message": "Hello, I would like to book a spray tan appointment.",
-      "cta.error": "Error loading contact information",
+      // FAQ Section
+      "faq.badge": "Frequently Asked Questions",
+      "faq.title": "Everything you need to know",
+      "faq.subtitle": "Practical information about spray tan - preparation, care and effects",
+      "faq.stillQuestions": "Still have questions?",
+      "faq.contactDescription": "Contact me directly. I'll be happy to answer all your questions and help you prepare for the treatment.",
+      "faq.contactMe": "Contact me",
       
+      "faq.q1": "How to prepare for spray tan treatment?",
+      "faq.a1": "Preparation is key to perfect results. 24-48 hours before treatment, exfoliate your entire body, but avoid oily products. On the day of visit: shower without moisturizing soap, don't use deodorant, lotions, perfumes or oils. Wear loose, dark clothing and flip-flops. Shave the day before, not on the day of treatment.",
+      
+      "faq.q2": "How long does the tan last?",
+      "faq.a2": "Spray tan lasts 7-10 days with proper care. The effect is most intense for the first 3-4 days, then gradually and naturally fades. Duration depends on skin type, care and physical activity. Dry skin retains tan longer than oily skin.",
+      
+      "faq.q3": "Is spray tanning safe?",
+      "faq.a3": "Yes, spray tan is completely safe. We use DHA (dihydroxyacetone) - a natural ingredient approved by FDA that reacts only with the surface layer of skin. Unlike sun tanning or tanning beds, there's no risk of skin cancer, premature aging or burns.",
+      
+      "faq.q4": "When can I shower after treatment?",
+      "faq.a4": "First shower after minimum 8-12 hours (preferably next morning). Use lukewarm water and gentle gel without oils. Don't rub your skin - just gently pat dry with a towel. After bathing, immediately moisturize skin with oil-free lotion. Avoid long, hot baths, sauna and jacuzzi for the first 24-48 hours.",
+      
+      "faq.q5": "Can I exercise after spray tanning?",
+      "faq.a5": "Avoid intense exercise for the first 8-12 hours to prevent sweat stains. After that, you can exercise normally, but always shower right after workout and moisturize skin. Swimming in chlorinated water shortens tan duration.",
+      
+      "faq.q6": "How to extend tan duration?",
+      "faq.a6": "Moisturizing is key! Use oil-free lotion twice daily. Avoid products with AHA, BHA, retinol - they accelerate exfoliation. Wear gloves when cleaning, avoid long hot baths. Gently exfoliate skin every 2-3 days with dry brush or mitt.",
+      
+      "faq.q7": "Is spray tan suitable for sensitive skin?",
+      "faq.a7": "I use hypoallergenic Norvell products, safe for sensitive skin. Before treatment, I perform a patch test on a small area. I avoid spray tan with active skin inflammation, fresh wounds or irritation.",
+      
+      "faq.q8": "Can I spray tan during pregnancy?",
+      "faq.a8": "Spray tan is safe during pregnancy - DHA doesn't absorb into bloodstream. However, I always recommend consulting with gynecologist before treatment. I avoid abdominal area in first trimester as precaution.",
+      
+      "faq.q9": "How long does treatment take and how does it proceed?",
+      "faq.a9": "Treatment takes 20-30 minutes total. We start with consultation - shade selection, discussing expectations. Then application in special cabin with professional gun. Finally care instructions. The whole process is comfortable and discreet.",
+      
+      "faq.q10": "What to do if result is uneven?",
+      "faq.a10": "Unevenness can be corrected within 24-48 hours. Gently exfoliate darker areas with sugar and olive oil mixture. Light areas can be touched up with self-tanner. If problem persists, contact me - correction included in service.",
+
       // Footer
-      "footer.business_name": "Spray Tan Poland",
-      "footer.description": "Your professional spray tan specialist in Poland. Natural and lasting results for a perfect tan all year round.",
+      "footer.description": "Your professional spray tan specialist near Koszalin. Natural and lasting results for the perfect tan all year round. Professional Norvell products and individual approach to each client.",
       "footer.quick_links": "Quick navigation",
-      "footer.about": "About",
-      "footer.testimonials": "Testimonials",
-      "footer.gallery": "Gallery",
-      "footer.portfolio": "Portfolio",
-      "footer.contact": "Contact",
-      "footer.services": "Our services",
-      "footer.service_1": "Classic Spray Tan",
-      "footer.service_2": "Express Spray Tan",
-      "footer.service_3": "Skin preparation",
-      "footer.service_4": "Personalized advice",
+      "footer.call": "Call",
       "footer.contact_info": "Contact",
-      "footer.follow_us": "Follow us",
-      "footer.all_rights_reserved": "All rights reserved",
+      "footer.follow_us": "Find me here",
+      "footer.all_rights_reserved": "All rights reserved.",
       "footer.legal_notice": "Legal notice",
-      "footer.privacy_policy": "Privacy policy",
       "footer.gdpr": "GDPR",
       "footer.developed_by": "Developed by",
       "footer.back_to_top": "Back to top"

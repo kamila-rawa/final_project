@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\PortfolioImage;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class PortfolioImageController extends Controller
 {
@@ -19,7 +19,10 @@ class PortfolioImageController extends Controller
 
         $query = PortfolioImage::active()->ordered();
 
-        if ($category && $category !== 'all') {
+        // Pour "wszystkie", on utilise un ordre aléatoire
+        if ($category === 'all' || ! $category) {
+            $query->randomOrder();
+        } elseif ($category && $category !== 'all') {
             $query->byCategory($category);
         }
 
@@ -31,6 +34,7 @@ class PortfolioImageController extends Controller
                 'image' => $image->image_url,
                 'category' => $image->category,
                 'alt_text' => $image->getTranslatedAltText($language),
+                'created_at' => $image->created_at,
             ];
         });
 
@@ -48,7 +52,7 @@ class PortfolioImageController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $images
+            'data' => $images,
         ]);
     }
 
@@ -63,11 +67,11 @@ class PortfolioImageController extends Controller
             'description_pl' => 'nullable|string',
             'description_en' => 'nullable|string',
             'image' => 'required|string',
-            'category' => 'required|in:products,salon,equipment,other',
+            'category' => 'required|in:opalanie,kosmetyki,certyfikaty,smsy,inne',
             'alt_text_pl' => 'nullable|string|max:255',
             'alt_text_en' => 'nullable|string|max:255',
             'display_order' => 'integer',
-            'is_active' => 'boolean'
+            'is_active' => 'boolean',
         ]);
 
         $image = PortfolioImage::create($validated);
@@ -75,7 +79,7 @@ class PortfolioImageController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Image portfolio créée avec succès',
-            'data' => $image
+            'data' => $image,
         ], 201);
     }
 
@@ -95,7 +99,7 @@ class PortfolioImageController extends Controller
                 'image' => $portfolioImage->image_url,
                 'category' => $portfolioImage->category,
                 'alt_text' => $portfolioImage->getTranslatedAltText($language),
-            ]
+            ],
         ]);
     }
 
@@ -110,11 +114,11 @@ class PortfolioImageController extends Controller
             'description_pl' => 'nullable|string',
             'description_en' => 'nullable|string',
             'image' => 'string',
-            'category' => 'in:products,salon,equipment,other',
+            'category' => 'in:opalanie,kosmetyki,certyfikaty,smsy,inne',
             'alt_text_pl' => 'nullable|string|max:255',
             'alt_text_en' => 'nullable|string|max:255',
             'display_order' => 'integer',
-            'is_active' => 'boolean'
+            'is_active' => 'boolean',
         ]);
 
         $portfolioImage->update($validated);
@@ -122,7 +126,7 @@ class PortfolioImageController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Image portfolio mise à jour avec succès',
-            'data' => $portfolioImage
+            'data' => $portfolioImage,
         ]);
     }
 
@@ -135,7 +139,7 @@ class PortfolioImageController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Image portfolio supprimée avec succès'
+            'message' => 'Image portfolio supprimée avec succès',
         ]);
     }
 
@@ -146,7 +150,7 @@ class PortfolioImageController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => PortfolioImage::getCategories()
+            'data' => PortfolioImage::getCategories(),
         ]);
     }
 }

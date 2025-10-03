@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Head, usePage } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
 
-// Composants principaux - nouvel ordre
+// Composants principaux
 import Header from '@/components/spraytan/Header';
 import About from '@/components/spraytan/About';
 import Hero from '@/components/spraytan/Hero';
 import PortfolioGallery from '@/components/spraytan/PortfolioGallery';
 import CTA from '@/components/spraytan/CTA';
 import Testimonials from '@/components/spraytan/Testimonials';
-import BeforeAfterGallery from '@/components/spraytan/BeforeAfterGallery';
 import FAQ from '@/components/spraytan/FAQ';
 import Footer from '@/components/spraytan/Footer';
 import Process from '@/components/spraytan/Process';
@@ -17,61 +16,7 @@ import '../i18n';
 
 export default function Welcome() {
     const { auth } = usePage().props;
-    const { t, i18n } = useTranslation();
-    
-    // États pour le contenu dynamique
-    const [testimonials, setTestimonials] = useState([]);
-    const [contactInfo, setContactInfo] = useState({});
-    const [beforeAfterImages, setBeforeAfterImages] = useState([]);
-    const [portfolioImages, setPortfolioImages] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    // Chargement des données dynamiques
-    useEffect(() => {
-        fetchDynamicContent();
-    }, [i18n.language]);
-
-    const fetchDynamicContent = async () => {
-        try {
-            setLoading(true);
-            
-            // Appel API pour récupérer les témoignages
-            const testimonialsResponse = await fetch(`/api/public/testimonials?lang=${i18n.language}`);
-            const testimonialsData = await testimonialsResponse.json();
-            
-            // Appel API pour récupérer les infos de contact
-            const contactResponse = await fetch(`/api/public/contacts?lang=${i18n.language}`);
-            const contactData = await contactResponse.json();
-            
-            // Appel API pour récupérer les images before/after
-            const beforeAfterResponse = await fetch(`/api/public/before-after-images?lang=${i18n.language}`);
-            const beforeAfterData = await beforeAfterResponse.json();
-            
-            // Appel API pour récupérer les images portfolio
-            const portfolioResponse = await fetch(`/api/public/portfolio-images?lang=${i18n.language}`);
-            const portfolioData = await portfolioResponse.json();
-            
-            setTestimonials(testimonialsData);
-            setContactInfo(contactData);
-            setBeforeAfterImages(beforeAfterData);
-            setPortfolioImages(portfolioData);
-        } catch (error) {
-            console.error('Erreur lors du chargement des données:', error);
-            // Fallback avec des données par défaut
-            setTestimonials([]);
-            setContactInfo({
-                phone: '+48 123 456 789',
-                email: 'contact@spraytan.pl',
-                address: 'Warsaw, Poland',
-                instagram: '@spraytan_poland',
-                facebook: 'SprayTanPoland'
-            });
-            setBeforeAfterImages([]);
-            setPortfolioImages([]);
-        } finally {
-            setLoading(false);
-        }
-    };
+    const { t } = useTranslation();
 
     return (
         <>
@@ -80,7 +25,7 @@ export default function Welcome() {
                     name="description" 
                     content={t('meta.description', 'Get the perfect golden tan with professional spray tan services. Safe, natural-looking results. Book your appointment today!')} 
                 />
-                <meta name="keywords" content="spray tan, bronze, beauty, Poland, professional" />
+                <meta name="keywords" content="spray tan, bronze, beauty, Poland, professional, opalanie natryskowe" />
                 <meta property="og:title" content={t('meta.title')} />
                 <meta property="og:description" content={t('meta.description')} />
                 <meta property="og:type" content="website" />
@@ -93,7 +38,7 @@ export default function Welcome() {
             </Head>
 
             <div className="min-h-screen bg-white">
-                {/* Header avec navigation ET bouton langue intégré */}
+                {/* Header avec navigation */}
                 <Header />
 
                 {/* Section Hero */}
@@ -102,22 +47,19 @@ export default function Welcome() {
                 {/* Section Processus (étapes du spray tan) */}
                 <Process />
 
-                {/* Section À propos (présentation de ta cousine) */}
+                {/* Section À propos */}
                 <About />
 
-                {/* Galerie Portfolio (salon, produits, équipements) */}
+                {/* Galerie Portfolio - Dynamique via API */}
                 <PortfolioGallery />
 
-                {/* Témoignages clients */}
+                {/* Témoignages clients - Statique */}
                 <Testimonials />
 
-                {/* Galerie Before & After (transformations) */}
-                <BeforeAfterGallery />
-
-                {/* Call to Action / Contact */}
+                {/* Call to Action / Contact - Statique */}
                 <CTA />
 
-                {/* FAQ (statique) */}
+                {/* FAQ - Statique */}
                 <FAQ />
 
                 {/* Footer */}

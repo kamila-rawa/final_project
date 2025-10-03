@@ -96,16 +96,7 @@ export default function Header() {
                             >
                                 {t('nav.testimonials', 'Opinie')}
                             </button>
-                            <button
-                                onClick={() => scrollToSection('faq')}
-                                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
-                                    isScrolled 
-                                        ? 'text-gray-700 hover:text-amber-700 hover:bg-amber-50' 
-                                        : 'text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm'
-                                }`}
-                            >
-                                {t('nav.faq', 'FAQ')}
-                            </button>
+                         
                             
                             {/* Kontakt button - style comme Hero */}
                             <button
@@ -115,6 +106,17 @@ export default function Header() {
                                 {t('nav.contact', 'Kontakt')}
                             </button>
                             
+   <button
+                                onClick={() => scrollToSection('faq')}
+                                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                                    isScrolled 
+                                        ? 'text-gray-700 hover:text-amber-700 hover:bg-amber-50' 
+                                        : 'text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm'
+                                }`}
+                            >
+                                {t('nav.faq', 'FAQ')}
+                            </button>
+
                             {/* Language Toggle */}
                             <button
                                 onClick={toggleLanguage}

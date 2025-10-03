@@ -5,17 +5,44 @@ export default function Process() {
     const { t } = useTranslation();
 
     return (
-        <div id="process" className="relative isolate overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
-            {/* Effet de fond décoratif matching CTA */}
-            <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-[calc(50%-36rem)] left-[calc(50%-19rem)] transform-gpu blur-3xl">
-                    <div
-                        style={{
-                            clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                        }}
-                        className="aspect-1097/1023 w-[68.5625rem] bg-gradient-to-r from-amber-300 to-yellow-200 opacity-30"
+        <div id="process" className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
+            {/* Grille SVG comme Testimonials */}
+            <svg
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 hidden size-full [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)] stroke-amber-200 sm:block"
+            >
+                <defs>
+                    <pattern
+                        x="50%"
+                        y={0}
+                        id="process-grid-pattern"
+                        width={200}
+                        height={200}
+                        patternUnits="userSpaceOnUse"
+                    >
+                        <path d="M.5 200V.5H200" fill="none" />
+                    </pattern>
+                </defs>
+                <svg x="50%" y={0} className="overflow-visible fill-amber-50">
+                    <path
+                        d="M-200.5 0h201v201h-201Z M599.5 0h201v201h-201Z M399.5 400h201v201h-201Z M-400.5 600h201v201h-201Z"
+                        strokeWidth={0}
                     />
-                </div>
+                </svg>
+                <rect fill="url(#process-grid-pattern)" width="100%" height="100%" strokeWidth={0} />
+            </svg>
+
+            {/* Effet décoratif amber comme Testimonials */}
+            <div
+                aria-hidden="true"
+                className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl"
+            >
+                <div
+                    style={{
+                        clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+                    }}
+                    className="ml-[max(50%,38rem)] aspect-1313/771 w-[82.0625rem] bg-gradient-to-tr from-amber-400 to-amber-600"
+                />
             </div>
             
             <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
@@ -43,7 +70,7 @@ export default function Process() {
                     <div className="relative">
                         <img
                             alt="Professional spray tan transformation"
-                            src="/photos/process.jpg"
+                            src="/photos/process.png"
                             className="w-[48rem] max-w-none rounded-2xl bg-gray-900 shadow-2xl ring-1 ring-gray-400/10 sm:w-[57rem]"
                         />
                         {/* Overlay décoratif */}
@@ -94,24 +121,30 @@ export default function Process() {
                                     </span>
                                 </li>
                             </ul>
-                            <p className="mt-8 text-amber-700">
-                                {t('process.conclusion', 'Efekt utrzymuje się 7-10 dni i stopniowo, naturalnie zanika. Możesz cieszyć się pięknym kolorem skóry przez cały rok, niezależnie od pogody czy pory roku.')}
-                            </p>
-                            
+                        <p className="mt-8 text-gray-600">
+    {t('process.conclusion', 'Efekt utrzymuje się 7-10 dni i stopniowo, naturalnie zanika. Możesz cieszyć się pięknym kolorem skóry przez cały rok, niezależnie od pogody czy pory roku.')}
+</p>
                             {/* Call to Action */}
-                            <div className="mt-12 text-center">
-                                <h3 className="text-xl font-semibold text-amber-900 mb-4">
-                                    {t('process.cta_title', 'Gotowa na swoją transformację?')}
-                                </h3>
-                                <button
-                                    onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
-                                    className="inline-flex items-center px-6 py-3 text-base font-semibold text-white bg-amber-500 rounded-lg hover:bg-amber-400 transition-colors duration-300 shadow-lg hover:shadow-xl"
-                                >
-                                    {t('process.cta_button', 'Umów się na wizytę')}
-                                    <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
-                                </button>
+                     {/* Call to Action - Style Testimonials */}
+                            <div className="mt-12">
+                                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-amber-200/50">
+                                    <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
+                                        {t('process.cta_title', 'Gotowa na swoją transformację?')}
+                                    </h3>
+                                    <div className="text-center">
+                                        <button
+                                            onClick={() => {
+                                                const ctaElement = document.getElementById('cta');
+                                                if (ctaElement) {
+                                                    ctaElement.scrollIntoView({ behavior: 'smooth' });
+                                                }
+                                            }}
+                                            className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl"
+                                        >
+                                            {t('process.cta_button', 'Umów się na wizytę')}
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

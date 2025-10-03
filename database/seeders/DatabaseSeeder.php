@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ContactInfoSeeder::class,
             TestimonialSeeder::class,
+            PortfolioImagesSeeder::class,
             // GalleryImageSeeder peut être ajouté plus tard
         ]);
     }
