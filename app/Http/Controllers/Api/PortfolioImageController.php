@@ -17,13 +17,19 @@ class PortfolioImageController extends Controller
     {
         $category = $request->get('category');
 
-        $query = PortfolioImage::active()->ordered();
-
-        // Pour "all", on utilise un ordre aléatoire
         if ($category === 'all' || ! $category) {
             $query = PortfolioImage::active()->inRandomOrder();
-        } elseif ($category && $category !== 'all') {
-            $query->byCategory($category);
+        } else {
+            $query = PortfolioImage::active()->byCategory($category);
+
+            // Opalanie : du plus ancien au plus récent
+            if ($category === 'opalanie') {
+                $query->orderBy('created_at', 'asc');
+            }
+            // Kosmetyki et Smsy : du plus récent au plus ancien
+            else {
+                $query->orderBy('created_at', 'desc');
+            }
         }
 
         $images = $query->get()->map(function ($image) {
@@ -49,12 +55,19 @@ class PortfolioImageController extends Controller
     {
         $category = $request->get('category');
 
-        $query = PortfolioImage::orderBy('category')
-            ->orderBy('display_order')
-            ->orderBy('created_at', 'desc');
+        $query = PortfolioImage::query();
 
         if ($category && $category !== 'all') {
             $query->where('category', $category);
+
+            // MÊME TRI QUE LE SITE PUBLIC pour cohérence
+            if ($category === 'opalanie') {
+                $query->orderBy('created_at', 'asc');
+            } else {
+                $query->orderBy('created_at', 'desc');
+            }
+        } else {
+            $query->orderBy('created_at', 'desc');
         }
 
         $images = $query->get()->map(function ($image) {
@@ -113,7 +126,7 @@ class PortfolioImageController extends Controller
             $validated['image'] = $filename;
         }
 
-        // Définir l'ordre si non fourni
+        // CORRECTION: Toujours ajouter à la fin (dernier display_order + 1)
         if (! isset($validated['display_order'])) {
             $maxOrder = PortfolioImage::where('category', $validated['category'])->max('display_order');
             $validated['display_order'] = $maxOrder ? $maxOrder + 1 : 1;

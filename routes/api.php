@@ -1,28 +1,16 @@
 <?php
 
-// routes/api.php
-
 use App\Http\Controllers\Api\PortfolioImageController;
-use App\Http\Controllers\Auth\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-|
-| Routes publiques pour le front-end et routes admin sécurisées
-| Toutes les routes sont préfixées par /api
-|
 */
 
-// ============================================================================
-// ROUTES PUBLIQUES - Accessibles sans authentification
-// ============================================================================
-
+// Routes publiques - Portfolio
 Route::prefix('public')->group(function () {
-
-    // Galerie Portfolio publique
     Route::get('/portfolio-images', [PortfolioImageController::class, 'index'])
         ->name('api.portfolio.public');
 
@@ -30,30 +18,10 @@ Route::prefix('public')->group(function () {
         ->name('api.portfolio.categories');
 });
 
-// ============================================================================
-// AUTHENTIFICATION ADMIN
-// ============================================================================
+// Routes admin - Protection avec l'authentification Laravel standard
+Route::middleware(['web', 'auth'])->prefix('admin')->group(function () {
 
-Route::prefix('auth')->group(function () {
-    Route::post('/login', [AdminAuthController::class, 'login'])
-        ->name('api.auth.login');
-
-    Route::post('/logout', [AdminAuthController::class, 'logout'])
-        ->name('api.auth.logout');
-
-    Route::get('/status', [AdminAuthController::class, 'status'])
-        ->name('api.auth.status');
-});
-
-// ============================================================================
-// ROUTES ADMIN - Nécessitent authentification
-// ============================================================================
-
-Route::middleware(['admin.auth'])->prefix('admin')->group(function () {
-
-    // ========================================
-    // GESTION GALERIE PORTFOLIO
-    // ========================================
+    // Gestion Portfolio
     Route::prefix('portfolio')->group(function () {
         Route::get('/', [PortfolioImageController::class, 'adminIndex'])
             ->name('api.admin.portfolio.index');
@@ -66,11 +34,12 @@ Route::middleware(['admin.auth'])->prefix('admin')->group(function () {
 
         Route::delete('/{portfolioImage}', [PortfolioImageController::class, 'destroy'])
             ->name('api.admin.portfolio.destroy');
+
+        Route::post('/reorder', [PortfolioImageController::class, 'reorder'])
+            ->name('api.admin.portfolio.reorder');
     });
 
-    // ========================================
-    // DASHBOARD STATS
-    // ========================================
+    // Stats Dashboard
     Route::get('/stats', function () {
         return response()->json([
             'success' => true,
@@ -84,29 +53,11 @@ Route::middleware(['admin.auth'])->prefix('admin')->group(function () {
     })->name('api.admin.stats');
 });
 
-// ============================================================================
-// ROUTES UTILITAIRES
-// ============================================================================
-
-// Health check de l'API
+// Health check
 Route::get('/health', function () {
     return response()->json([
         'success' => true,
         'message' => 'API is running',
         'timestamp' => now()->toISOString(),
-        'version' => '1.0.0',
     ]);
 })->name('api.health');
-
-// Test de configuration
-Route::get('/config', function () {
-    return response()->json([
-        'success' => true,
-        'data' => [
-            'locale' => app()->getLocale(),
-            'available_locales' => ['pl', 'en'],
-            'timezone' => config('app.timezone'),
-            'admin_configured' => ! empty(env('ADMIN_EMAIL')),
-        ],
-    ]);
-})->name('api.config');

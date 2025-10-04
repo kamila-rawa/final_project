@@ -33,10 +33,10 @@ class PortfolioImage extends Model
         return $query->where('category', $category);
     }
 
-    // Scope pour ordonner
+    // Scope pour ordonner - CORRECTION: ajout de 'asc' explicite
     public function scopeOrdered($query)
     {
-        return $query->orderBy('display_order')->orderBy('created_at', 'desc');
+        return $query->orderBy('display_order', 'asc')->orderBy('created_at', 'desc');
     }
 
     // Scope pour mélange aléatoire
