@@ -19,7 +19,6 @@ const resources = {
       "nav.tanning": "Opalanie",
       "nav.services": "Usługi", 
       "nav.testimonials": "Opinie",
-      "nav.gallery": "Galeria",
       "nav.portfolio": "Portfolio",
       "nav.contact": "Kontakt",
       "nav.faq": "Pytania",
@@ -85,53 +84,35 @@ const resources = {
       "meta.title": "Profesjonalne Usługi Spray Tan w Polsce - Like a Gold",
       "meta.description": "Uzyskaj idealną opaleniznę dzięki profesjonalnym usługom spray tan. Bezpieczne, naturalnie wyglądające rezultaty. Zarezerwuj wizytę już dziś!",
 
-      // Témoignages
-     "testimonials.title": "Opinie klientów",
-"testimonials.subtitle": "Poznaj opinie naszych zadowolonych klientów",
-"testimonials.cta": "Dołącz do naszych zadowolonych klientów!",
-"testimonials.book_now": "Zarezerwuj teraz",
-"testimonials.error": "Błąd przy ładowaniu opinii",
+      // Testimonials - CORRIGÉ
+      "testimonials.title": "Opinie klientek",
+      "testimonials.subtitle": "Poznaj opinie zadowolonych klientek",
+      "testimonials.cta": "Dołącz do moich zadowolonych klientek!",
+      "testimonials.book_now": "Zarezerwuj teraz",
+      "testimonials.error": "Błąd przy ładowaniu opinii",
 
-"testimonials.client1.name": "Beata R.",
-"testimonials.client1.message": "Profesjonalna obsługa, piękny efekt i świetna atmosfera. Aneta dokładnie wyjaśniła cały proces i dopasowała kolor idealnie do mojej skóry. Efekt utrzymał się ponad tydzień! Polecam z całego serca.",
+      "testimonials.client1.name": "Beata R.",
+      "testimonials.client1.message": "Profesjonalna obsługa, piękny efekt i świetna atmosfera. Aneta dokładnie wyjaśniła cały proces i dopasowała kolor idealnie do mojej skóry. Efekt utrzymał się ponad tydzień! Polecam z całego serca.",
 
-"testimonials.client2.name": "Agnieszka T.",
-"testimonials.client2.message": "Świetny efekt i bardzo miła atmosfera. Aneta jest profesjonalistką, dokładnie wszystko wyjaśnia. Polecam!",
+      "testimonials.client2.name": "Agnieszka T.",
+      "testimonials.client2.message": "Świetny efekt i bardzo miła atmosfera. Aneta jest profesjonalistką, dokładnie wszystko wyjaśnia. Polecam!",
 
-"testimonials.client3.name": "Joanna M.",
-"testimonials.client3.message": "Rewelacyjna opalenizna! Naturalny kolor, równomierne pokrycie. Aneta wie co robi, czuć doświadczenie.",
+      "testimonials.client3.name": "Joanna M.",
+      "testimonials.client3.message": "Rewelacyjna opalenizna! Naturalny kolor, równomierne pokrycie. Aneta wie co robi, czuć doświadczenie.",
 
-"testimonials.client4.name": "Maria S.",
-"testimonials.client4.message": "Idealna opalenizna przed weselem! Dokładnie taki efekt jakiego oczekiwałam. Dziękuję!",
+      "testimonials.client4.name": "Maria S.",
+      "testimonials.client4.message": "Idealna opalenizna przed weselem! Dokładnie taki efekt jakiego oczekiwałam. Dziękuję!",
 
-"testimonials.client5.name": "Magdalena W.",
-"testimonials.client5.message": "Profesjonalizm na najwyższym poziomie. Piękna, naturalna opalenizna bez smug. Wrócę na pewno!",
+      "testimonials.client5.name": "Magdalena W.",
+      "testimonials.client5.message": "Profesjonalizm na najwyższym poziomie. Piękna, naturalna opalenizna bez smug. Wrócę na pewno!",
 
-"testimonials.client6.name": "Katarzyna L.",
-"testimonials.client6.message": "Bardzo dobra jakość usługi. Opalenizna równomierna i naturalna. Polecam każdemu!",
+      "testimonials.client6.name": "Katarzyna L.",
+      "testimonials.client6.message": "Bardzo dobra jakość usługi. Opalenizna równomierna i naturalna. Polecam każdemu!",
 
-"testimonials.client7.name": "Anna K.",
-"testimonials.client7.message": "Super efekt! Aneta jest bardzo miła i profesjonalna. Najlepsza opalenizna jaką miałam!",
+      "testimonials.client7.name": "Anna K.",
+      "testimonials.client7.message": "Super efekt! Aneta jest bardzo miła i profesjonalna. Najlepsza opalenizna jaką miałam!",
 
-      
-      // Galerie avant/après
-      "gallery.title": "Galeria Przed/Po",
-      "gallery.subtitle": "Odkryj transformacje wykonane przez nasz profesjonalny spray tan",
-      "gallery.before_after": "Przed/Po",
-      "gallery.click_to_compare": "Kliknij aby zobaczyć przed/po",
-      "gallery.view_image": "Zobacz obraz",
-      "gallery.before": "Przed",
-      "gallery.after": "Po",
-      "gallery.previous": "Poprzedni",
-      "gallery.next": "Następny",
-      "gallery.close": "Zamknij",
-      "gallery.comparison": "Porównanie",
-      "gallery.modal_title": "Porównanie przed/po",
-      "gallery.navigation_hint": "Użyj strzałek lub ESC aby zamknąć",
-      "gallery.no_images": "Brak dostępnych zdjęć w tym momencie",
-      "gallery.error": "Błąd przy ładowaniu galerii",
-      
-      // Portfolio
+      // Portfolio - MODIFIÉ (pas de galerie avant/après)
       "portfolio.title": "Nasze Portfolio",
       "portfolio.subtitle": "Odkryj nasze realizacje i zainspiruj się naszymi kreacjami",
       "portfolio.category.all": "Wszystko",
@@ -216,7 +197,6 @@ const resources = {
       "nav.tanning": "Tanning",
       "nav.services": "Services",
       "nav.testimonials": "Testimonials",
-      "nav.gallery": "Gallery",
       "nav.portfolio": "Portfolio",
       "nav.contact": "Contact",
       "nav.faq": "FAQ",
@@ -282,51 +262,35 @@ const resources = {
       "meta.title": "Professional Spray Tan Services in Poland - Like a Gold",
       "meta.description": "Get the perfect golden tan with professional spray tan services. Safe, natural-looking results. Book your appointment today!",
 
-      // Testimonials
+      // Testimonials - CORRECTED
       "testimonials.title": "Client Testimonials",
       "testimonials.subtitle": "Discover the reviews of our satisfied clients",
       "testimonials.cta": "Join our satisfied clients!",
       "testimonials.book_now": "Book now",
       "testimonials.error": "Error loading testimonials",
 
-     "testimonials.client1.name": "Beata R.",
-"testimonials.client1.message": "Professional service, beautiful effect and great atmosphere. Aneta explained the whole process thoroughly and matched the color perfectly to my skin. The effect lasted over a week! I highly recommend.",
+      "testimonials.client1.name": "Beata R.",
+      "testimonials.client1.message": "Professional service, beautiful effect and great atmosphere. Aneta explained the whole process thoroughly and matched the color perfectly to my skin. The effect lasted over a week! I highly recommend.",
 
-"testimonials.client2.name": "Agnieszka T.",
-"testimonials.client2.message": "Great effect and very nice atmosphere. Aneta is a professional, explains everything thoroughly. I recommend!",
+      "testimonials.client2.name": "Agnieszka T.",
+      "testimonials.client2.message": "Great effect and very nice atmosphere. Aneta is a professional, explains everything thoroughly. I recommend!",
 
-"testimonials.client3.name": "Joanna M.",
-"testimonials.client3.message": "Amazing tan! Natural color, even coverage. Aneta knows what she's doing, you can feel the experience.",
+      "testimonials.client3.name": "Joanna M.",
+      "testimonials.client3.message": "Amazing tan! Natural color, even coverage. Aneta knows what she's doing, you can feel the experience.",
 
-"testimonials.client4.name": "Maria S.",
-"testimonials.client4.message": "Perfect tan before the wedding! Exactly the effect I was expecting. Thank you!",
+      "testimonials.client4.name": "Maria S.",
+      "testimonials.client4.message": "Perfect tan before the wedding! Exactly the effect I was expecting. Thank you!",
 
-"testimonials.client5.name": "Magdalena W.",
-"testimonials.client5.message": "Professionalism at the highest level. Beautiful, natural tan without streaks. I will definitely come back!",
+      "testimonials.client5.name": "Magdalena W.",
+      "testimonials.client5.message": "Professionalism at the highest level. Beautiful, natural tan without streaks. I will definitely come back!",
 
-"testimonials.client6.name": "Katarzyna L.",
-"testimonials.client6.message": "Very good quality of service. Even and natural tan. I recommend to everyone!",
+      "testimonials.client6.name": "Katarzyna L.",
+      "testimonials.client6.message": "Very good quality of service. Even and natural tan. I recommend to everyone!",
 
-"testimonials.client7.name": "Anna K.",
-"testimonials.client7.message": "Amazing effect! Aneta is very nice and professional. The best tan I've ever had!",
-      // Before/After Gallery
-      "gallery.title": "Before/After Gallery",
-      "gallery.subtitle": "Discover the transformations achieved by our professional spray tan",
-      "gallery.before_after": "Before/After",
-      "gallery.click_to_compare": "Click to see before/after",
-      "gallery.view_image": "View image",
-      "gallery.before": "Before",
-      "gallery.after": "After",
-      "gallery.previous": "Previous",
-      "gallery.next": "Next",
-      "gallery.close": "Close",
-      "gallery.comparison": "Comparison",
-      "gallery.modal_title": "Before/after comparison",
-      "gallery.navigation_hint": "Use arrows or ESC to close",
-      "gallery.no_images": "No images available at the moment",
-      "gallery.error": "Error loading gallery",
-      
-      // Portfolio
+      "testimonials.client7.name": "Anna K.",
+      "testimonials.client7.message": "Amazing effect! Aneta is very nice and professional. The best tan I've ever had!",
+
+      // Portfolio (sans galerie avant/après)
       "portfolio.title": "Our Portfolio",
       "portfolio.subtitle": "Discover our work and get inspired by our creations",
       "portfolio.category.all": "All",

@@ -24,11 +24,11 @@ class PortfolioImageController extends Controller
 
             // Opalanie : du plus ancien au plus récent
             if ($category === 'opalanie') {
-                $query->orderBy('created_at', 'asc');
+                $query->orderBy('created_at', 'asc')->orderBy('id', 'asc');
             }
             // Kosmetyki et Smsy : du plus récent au plus ancien
             else {
-                $query->orderBy('created_at', 'desc');
+                $query->orderBy('created_at', 'desc')->orderBy('id', 'desc');
             }
         }
 
@@ -62,12 +62,12 @@ class PortfolioImageController extends Controller
 
             // MÊME TRI QUE LE SITE PUBLIC pour cohérence
             if ($category === 'opalanie') {
-                $query->orderBy('created_at', 'asc');
+                $query->orderBy('created_at', 'asc')->orderBy('id', 'asc');
             } else {
-                $query->orderBy('created_at', 'desc');
+                $query->orderBy('created_at', 'desc')->orderBy('id', 'desc');
             }
         } else {
-            $query->orderBy('created_at', 'desc');
+            $query->orderBy('created_at', 'desc')->orderBy('id', 'desc');
         }
 
         $images = $query->get()->map(function ($image) {
