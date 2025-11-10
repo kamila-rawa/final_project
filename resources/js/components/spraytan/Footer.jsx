@@ -7,7 +7,7 @@ export default function Footer() {
   
   const contactInfo = {
     phone: '+48 790 414 940',
-    address: 'Perłowa 5, 75-016 Skwierzynka, Pologne',
+    address: 'Perłowa 5, 75-016 Skwierzynka, Polska',
     whatsapp: '+48790414940',
     instagram: 'https://www.instagram.com/mobilne_opalanie_likeagold/',
     facebook: 'https://www.facebook.com/search/top?q=mobilne%20opalanie%20natryskowe'

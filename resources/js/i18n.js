@@ -22,6 +22,7 @@ const resources = {
       "nav.portfolio": "Portfolio",
       "nav.contact": "Kontakt",
       "nav.faq": "Pytania",
+      "nav.gallery": "Galeria",
       
       // Process Section
       "process.subtitle": "Szybki Sposób na Zdrową Opaleniznę",
@@ -200,6 +201,7 @@ const resources = {
       "nav.portfolio": "Portfolio",
       "nav.contact": "Contact",
       "nav.faq": "FAQ",
+      "nav.gallery": "Gallery",
       
       // Process Section
       "process.subtitle": "Quick Way to Healthy Tan",

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -29,37 +30,42 @@ class AdminAuthController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
-        // Récupérer les credentials depuis config ou .env
-        $adminEmail = config('admin.email', env('ADMIN_EMAIL'));
-        $adminPassword = config('admin.password', env('ADMIN_PASSWORD'));
+        // Chercher l'admin dans la table users
+        $admin = User::where('email', $request->email)->first();
 
-        if (!$adminEmail || !$adminPassword) {
+        if (! $admin) {
+            // Petit délai pour éviter les attaques par force brute
+            sleep(1);
+
             return response()->json([
                 'success' => false,
-                'message' => 'Configuration admin manquante'
-            ], 500);
+                'message' => 'Identifiants incorrects',
+            ], 401);
         }
 
-        // Vérifier les credentials
-        if ($request->email === $adminEmail && Hash::check($request->password, $adminPassword)) {
-            
+        // Vérifier le mot de passe
+        if (Hash::check($request->password, $admin->password)) {
+
             // Créer la session admin
             session([
                 'admin_authenticated' => true,
-                'admin_email' => $adminEmail,
-                'admin_login_time' => now()
+                'admin_email' => $admin->email,
+                'admin_name' => $admin->name,
+                'admin_id' => $admin->id,
+                'admin_login_time' => now(),
             ]);
 
             return response()->json([
                 'success' => true,
                 'message' => 'Connexion réussie',
                 'data' => [
-                    'admin_email' => $adminEmail,
-                    'login_time' => now()->format('Y-m-d H:i:s')
-                ]
+                    'admin_email' => $admin->email,
+                    'admin_name' => $admin->name,
+                    'login_time' => now()->format('Y-m-d H:i:s'),
+                ],
             ]);
         }
 
@@ -68,7 +74,7 @@ class AdminAuthController extends Controller
 
         return response()->json([
             'success' => false,
-            'message' => 'Identifiants incorrects'
+            'message' => 'Identifiants incorrects',
         ], 401);
     }
 
@@ -77,12 +83,12 @@ class AdminAuthController extends Controller
      */
     public function logout(): JsonResponse
     {
-        session()->forget(['admin_authenticated', 'admin_email', 'admin_login_time']);
+        session()->forget(['admin_authenticated', 'admin_email', 'admin_name', 'admin_id', 'admin_login_time']);
         session()->regenerate();
 
         return response()->json([
             'success' => true,
-            'message' => 'Déconnexion réussie'
+            'message' => 'Déconnexion réussie',
         ]);
     }
 
@@ -97,14 +103,15 @@ class AdminAuthController extends Controller
                 'authenticated' => true,
                 'data' => [
                     'admin_email' => session('admin_email'),
-                    'login_time' => session('admin_login_time')
-                ]
+                    'admin_name' => session('admin_name'),
+                    'login_time' => session('admin_login_time'),
+                ],
             ]);
         }
 
         return response()->json([
             'success' => true,
-            'authenticated' => false
+            'authenticated' => false,
         ]);
     }
 
@@ -113,13 +120,31 @@ class AdminAuthController extends Controller
      */
     public function dashboard()
     {
-        $stats = [
-            'testimonials_count' => \App\Models\Testimonial::count(),
-            'active_testimonials' => \App\Models\Testimonial::active()->count(),
-            'gallery_images' => \App\Models\GalleryImage::count(),
-            'active_images' => \App\Models\GalleryImage::active()->count(),
-            'contact_infos' => \App\Models\ContactInfo::active()->count()
-        ];
+        // Vérifier si les modèles existent avant de compter
+        $stats = [];
+
+        if (class_exists('\App\Models\Testimonial')) {
+            $stats['testimonials_count'] = \App\Models\Testimonial::count();
+            $stats['active_testimonials'] = \App\Models\Testimonial::active()->count();
+        }
+
+        if (class_exists('\App\Models\GalleryImage')) {
+            $stats['gallery_images'] = \App\Models\GalleryImage::count();
+            $stats['active_images'] = \App\Models\GalleryImage::active()->count();
+        }
+
+        if (class_exists('\App\Models\ContactInfo')) {
+            $stats['contact_infos'] = \App\Models\ContactInfo::active()->count();
+        }
+
+        // Statistiques des images portfolio (votre modèle actuel)
+        if (class_exists('\App\Models\PortfolioImage')) {
+            $stats['portfolio_images'] = \App\Models\PortfolioImage::count();
+            $stats['active_portfolio'] = \App\Models\PortfolioImage::where('is_active', true)->count();
+            $stats['opalanie_count'] = \App\Models\PortfolioImage::where('category', 'opalanie')->count();
+            $stats['kosmetyki_count'] = \App\Models\PortfolioImage::where('category', 'kosmetyki')->count();
+            $stats['smsy_count'] = \App\Models\PortfolioImage::where('category', 'smsy')->count();
+        }
 
         return inertia('Admin/Dashboard', compact('stats'));
     }

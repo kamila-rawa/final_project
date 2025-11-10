@@ -9,8 +9,7 @@ export default function Process() {
             {/* Grille SVG comme Testimonials */}
             <svg
                 aria-hidden="true"
-                className="absolute inset-0 -z-10 hidden size-full [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)] stroke-amber-200 sm:block"
-            >
+className="absolute inset-0 -z-10 size-full [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)] stroke-amber-200"            >
                 <defs>
                     <pattern
                         x="50%"

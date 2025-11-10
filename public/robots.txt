@@ -1,2 +1,30 @@
+# Robots.txt pour Like a Gold
+# Site: https://likeagold.pl
+
+# Autoriser tous les robots d'indexation
 User-agent: *
-Disallow:
+Allow: /
+
+# Bloquer les dossiers sensibles
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /node_modules/
+Disallow: /bootstrap/
+Disallow: /database/
+Disallow: /app/
+Disallow: /config/
+Disallow: /routes/
+Disallow: /tests/
+
+# Autoriser les ressources publiques
+Allow: /photos/
+Allow: /build/
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Lien vers le sitemap
+Sitemap: https://likeagold.pl/sitemap.xml
+
+# Délai entre les requêtes (optionnel - en secondes)
+Crawl-delay: 1
